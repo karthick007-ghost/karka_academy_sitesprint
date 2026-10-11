@@ -1,31 +1,34 @@
 import type { MetadataRoute } from "next";
+import { courses } from "@/content/courses";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://karka.academy";
 
-  const routes = [
+  const staticRoutes = [
     "",
     "/courses",
-    "/courses/mern-fullstack",
-    "/courses/ai-data-science",
-    "/courses/ui-ux-design",
     "/pay-after-placement",
     "/placements",
     "/internships",
-    "/for/school-students",
-    "/for/college-students",
+    "/for/college",
     "/for/graduates",
+    "/for/switchers",
     "/for/professionals",
+    "/for/school",
     "/about",
     "/contact",
     "/privacy-policy",
     "/terms-of-service",
   ];
 
-  return routes.map((route) => ({
+  const courseRoutes = courses.map((c) => `/courses/${c.slug}`);
+
+  const allRoutes = [...staticRoutes, ...courseRoutes];
+
+  return allRoutes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: route === "" ? 1.0 : 0.8,
+    changeFrequency: route === "" ? ("daily" as const) : ("weekly" as const),
+    priority: route === "" ? 1.0 : route.startsWith("/courses/") ? 0.8 : 0.7,
   }));
 }

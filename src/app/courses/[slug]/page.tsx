@@ -49,6 +49,8 @@ export async function generateMetadata({
   };
 }
 
+import { CourseJsonLd } from "@/components/seo/json-ld";
+
 export default async function CourseDetailPage({
   params,
 }: {
@@ -65,6 +67,7 @@ export default async function CourseDetailPage({
 
   return (
     <div className="py-10 md:py-16 bg-night-1">
+      <CourseJsonLd course={course} />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-night-muted">

@@ -20,14 +20,15 @@ export function proxy(request: NextRequest) {
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://challenges.cloudflare.com;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' data: blob:;
+    img-src 'self' data: blob: https:;
     font-src 'self' data:;
     connect-src 'self' https://challenges.cloudflare.com;
-    frame-src 'self' https://challenges.cloudflare.com https://www.google.com/maps/ https://www.youtube-nocookie.com;
+    frame-src 'self' https://challenges.cloudflare.com https://www.google.com https://www.youtube-nocookie.com;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
+    report-uri /api/csp-report;
   `
     .replace(/\s{2,}/g, " ")
     .trim();

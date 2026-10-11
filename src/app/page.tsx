@@ -9,9 +9,14 @@ import { EcosystemSection } from "@/components/sections/home/ecosystem-section";
 import { FaqSection } from "@/components/sections/home/faq-section";
 import { CtaSection } from "@/components/sections/home/cta-section";
 
+import { OrganizationJsonLd, FaqJsonLd } from "@/components/seo/json-ld";
+import { faqs } from "@/content/faqs";
+
 export default function HomePage() {
   return (
     <div className="flex flex-col">
+      <OrganizationJsonLd />
+      <FaqJsonLd faqs={faqs} />
       <HeroSection />
       <ProofBar />
       <PapSection />
