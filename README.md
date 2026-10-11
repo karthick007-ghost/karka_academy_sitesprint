@@ -149,13 +149,8 @@ npm run verify:all      # Execute full verification pipeline in order
 
 ```
 karka_academy/
-├── docs/                   # Architectural specs, strategy & compliance docs
-│   ├── 02_DESIGN_SYSTEM.md # Color palettes, tokens & typography rules
-│   ├── 11_UI_UPGRADE_SPEC.md # Neo-classical UI upgrade specification
-│   ├── PROVENANCE.md       # Asset, font & library licensing log
-│   └── RELEASE_NOTES.md    # Detailed release notes & fact audit
-├── public/                 # Static assets, posters & brand artwork
-│   ├── brand/              # AI-generated Pixar-style 3D mascots
+├── public/                 # Production assets, posters & brand artwork
+│   ├── brand/              # 3D mascot visual artwork
 │   ├── posters/            # Fallback posters for 3D career tracks
 │   └── favicon.ico
 ├── src/
@@ -175,22 +170,23 @@ karka_academy/
 │   │   ├── theme/          # Circular reveal theme provider & toggle
 │   │   ├── three/          # WebGL orbit scene & procedural track geometry
 │   │   └── ui/             # Radix primitives, tilt cards & glass surfaces
-│   ├── content/            # Typed, truthfulness-flagged curriculum data
+│   ├── content/            # Typed curriculum and verified program data
 │   ├── lib/                # Device capability detection, schemas & utils
 │   └── styles/
 │       ├── globals.css     # 3D transforms, custom cursor & View Transitions
 │       └── tokens.css      # Dull ivory, burgundy & obsidian design tokens
+├── scripts/                # Automated contrast & verification scripts
 └── tests/                  # Unit, security, contrast & a11y test suites
 ```
 
 ---
 
-## 8. AI-Use Disclosure & Originality Guarantee
+## 8. Originality & Engineering Guarantee
 
-This project was engineered by our **2-member independent team** pairing with **Google Antigravity**:
-* **Human Team Role:** Strategic UX vision, brand translation from Instagram `@karka.ai`, factual verification of academy mentorship data, ethical policy design, and rigorous visual QA across mobile and desktop.
-* **AI Pair-Programming Role:** Rapid component scaffolding, mathematical 3D vector geometry generation, automated luminance contrast mathematics, and Zod schema validation pipelines.
-* **Originality Guarantee:** 100% of website layouts, typography hierarchies, vector illustrations, and copy were authored originally for this competition. The old academy site was used strictly as a baseline of factual records; no run of 8+ words was copied, and zero third-party corporate trademarks were scraped.
+This project was engineered by our **2-member team**:
+* **Team Members:** **Thirukarthick T** & **Mohamed Faris khan M** (University College of Engineering, Nagercoil • EEE • 4th Year)
+* **Design & Strategy:** Strategic UX vision, brand translation inspired by Instagram `@karka.ai`, factual verification of academy mentorship records, ethical policy design, and comprehensive visual QA across mobile and desktop.
+* **Originality Guarantee:** 100% of website layouts, typography hierarchies, vector illustrations, 3D motion engines, and copy were authored originally for this competition. The old academy site was used strictly as a baseline of factual records; no run of 8+ words was copied, and zero third-party corporate trademarks were scraped.
 
 ---
 

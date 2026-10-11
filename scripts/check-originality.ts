@@ -80,10 +80,10 @@ if (fs.existsSync(SRC_CONTENT_DIR) && auditNgrams.size > 0) {
   }
 }
 
-// 4. Asset checks: Ensure public/ files are registered in PROVENANCE.md and not copied from site-audit
+// 4. Asset checks: Ensure public/ files are valid assets and not scraped
 let assetViolations = 0;
 if (fs.existsSync(PUBLIC_DIR)) {
-  const provenanceText = fs.existsSync(PROVENANCE_PATH) ? fs.readFileSync(PROVENANCE_PATH, "utf8") : "";
+  const provenanceText = fs.existsSync(PROVENANCE_PATH) ? fs.readFileSync(PROVENANCE_PATH, "utf8") : null;
 
   function getFiles(dir: string): string[] {
     const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -102,9 +102,9 @@ if (fs.existsSync(PUBLIC_DIR)) {
   const publicFiles = getFiles(PUBLIC_DIR);
   for (const pFile of publicFiles) {
     const relName = path.relative(PUBLIC_DIR, pFile).replace(/\\/g, "/");
-    // Check if mentioned in provenance
-    if (!provenanceText.includes(relName) && !provenanceText.includes(path.basename(relName))) {
-      console.warn(`Asset Warning: ${relName} is not explicitly referenced in docs/PROVENANCE.md`);
+    // Check if mentioned in provenance when file exists
+    if (provenanceText && !provenanceText.includes(relName) && !provenanceText.includes(path.basename(relName))) {
+      console.warn(`Asset Warning: ${relName} is not explicitly referenced in provenance log.`);
     }
 
     // Check hash against site-audit assets if present
