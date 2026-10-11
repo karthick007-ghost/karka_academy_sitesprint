@@ -21,8 +21,10 @@ export function useCapability(): DeviceCapabilities {
 
   useEffect(() => {
     // 1. Reduced Motion Check
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const prefersReducedMotion = motionQuery.matches;
+    const prefersReducedMotion =
+      typeof window !== "undefined" && typeof window.matchMedia === "function"
+        ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        : false;
 
     // 2. Data Saver Check
     const connection = (navigator as unknown as { connection?: { saveData?: boolean } }).connection;

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%" fill="none" role="img" aria-label="UI/UX & Product Design Track 3D Pen-Nib Visual Light">
+  <defs>
+    <radialGradient id="design-glow-light" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF5E7E" stop-opacity="0.14"/>
+      <stop offset="60%" stop-color="#8B5CF6" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#F7F3EC" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="nib-grad-light" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF7593"/>
+      <stop offset="50%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#BE123C"/>
+    </linearGradient>
+    <filter id="soft-shadow-design" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#14171F" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="400" height="400" rx="32" fill="#F7F3EC"/>
+  <circle cx="200" cy="200" r="160" fill="url(#design-glow-light)"/>
+
+  <!-- Arching 3D Bezier Curve -->
+  <path d="M 80 250 C 110 100, 290 100, 320 250" stroke="#6C2BD9" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M 95 245 C 120 120, 280 120, 305 245" stroke="#E11D48" stroke-width="1.2" stroke-dasharray="4 6" fill="none" opacity="0.4"/>
+
+  <!-- Tangent Vector Handle Bar -->
+  <line x1="100" y1="180" x2="300" y2="180" stroke="#B8964E" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Handle Anchor Points -->
+  <g filter="url(#soft-shadow-design)">
+    <rect x="90" y="170" width="20" height="20" rx="4" fill="#6C2BD9" stroke="#FFFFFF" stroke-width="2"/>
+    <rect x="290" y="170" width="20" height="20" rx="4" fill="#6C2BD9" stroke="#FFFFFF" stroke-width="2"/>
+    <circle cx="200" cy="180" r="7" fill="#E11D48" stroke="#FFFFFF" stroke-width="2"/>
+  </g>
+
+  <!-- Stylized 3D Pen-Nib -->
+  <g transform="translate(0, 5)" filter="url(#soft-shadow-design)">
+    <!-- Barrel -->
+    <path d="M 175 140 L 225 140 L 220 190 L 180 190 Z" fill="#F3E8FF" stroke="#6C2BD9" stroke-width="1.5"/>
+    <!-- Collar -->
+    <rect x="178" y="188" width="44" height="12" rx="3" fill="#6C2BD9"/>
+    <!-- Nib Blade -->
+    <path d="M 172 200 L 228 200 L 200 290 Z" fill="url(#nib-grad-light)" stroke="#FF85A1" stroke-width="1.5"/>
+    <!-- Central Breather Hole -->
+    <circle cx="200" cy="235" r="7" fill="#F7F3EC" stroke="#FFE4E6" stroke-width="1.5"/>
+    <!-- Ink Slit -->
+    <line x1="200" y1="242" x2="200" y2="288" stroke="#F7F3EC" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+</svg>

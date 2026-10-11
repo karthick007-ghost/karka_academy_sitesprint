@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%" fill="none" role="img" aria-label="Business & Finance Track 3D Ledger Visual Light">
+  <defs>
+    <radialGradient id="biz-glow-light-alias" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.14"/>
+      <stop offset="60%" stop-color="#B8964E" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#F7F3EC" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ledger-grad-light-alias" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#D1FAE5"/>
+    </linearGradient>
+    <filter id="soft-shadow-biz-alias" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#14171F" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="#F7F3EC"/>
+  <circle cx="200" cy="200" r="160" fill="url(#biz-glow-light-alias)"/>
+  <ellipse cx="200" cy="215" rx="140" ry="46" stroke="#7A5F24" stroke-width="1.5" stroke-dasharray="6 6" stroke-opacity="0.4"/>
+  <g filter="url(#soft-shadow-biz-alias)">
+    <polygon points="200,75 224,115 200,155 176,115" fill="#0B6B45" stroke="#A7F3D0" stroke-width="2"/>
+    <polygon points="200,75 224,115 200,155" fill="#059669"/>
+    <line x1="200" y1="170" x2="200" y2="155" stroke="#0B6B45" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(0, 45)" filter="url(#soft-shadow-biz-alias)">
+    <polygon points="200,215 315,180 200,145 85,180" fill="url(#ledger-grad-light-alias)" stroke="#A7F3D0" stroke-width="1.2"/>
+    <polygon points="85,180 200,215 200,230 85,195" fill="#A7F3D0"/>
+    <polygon points="200,215 315,180 315,195 200,230" fill="#6EE7B7"/>
+    <rect x="95" y="140" width="12" height="45" rx="3" fill="#B8964E" stroke="#7A5F24" stroke-width="1"/>
+    <rect x="293" y="140" width="12" height="45" rx="3" fill="#B8964E" stroke="#7A5F24" stroke-width="1"/>
+    <line x1="107" y1="152" x2="293" y2="152" stroke="#7A5F24" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="107" y1="172" x2="293" y2="172" stroke="#7A5F24" stroke-width="2.5" stroke-linecap="round"/>
+    <ellipse cx="140" cy="152" rx="10" ry="7" fill="#0B6B45" stroke="#34D399" stroke-width="1.5"/>
+    <ellipse cx="195" cy="152" rx="10" ry="7" fill="#0B6B45" stroke="#34D399" stroke-width="1.5"/>
+    <ellipse cx="260" cy="152" rx="10" ry="7" fill="#0B6B45" stroke="#34D399" stroke-width="1.5"/>
+    <ellipse cx="165" cy="172" rx="10" ry="7" fill="#B8964E" stroke="#7A5F24" stroke-width="1.5"/>
+    <ellipse cx="230" cy="172" rx="10" ry="7" fill="#B8964E" stroke="#7A5F24" stroke-width="1.5"/>
+    <ellipse cx="275" cy="172" rx="10" ry="7" fill="#B8964E" stroke="#7A5F24" stroke-width="1.5"/>
+  </g>
+</svg>

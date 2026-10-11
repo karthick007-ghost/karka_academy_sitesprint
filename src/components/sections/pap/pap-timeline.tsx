@@ -1,0 +1,436 @@
+"use client";
+
+import * as React from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+  ShieldCheck,
+  CheckCircle2,
+  Code2,
+  Briefcase,
+  Users2,
+  Target,
+  Sparkles,
+  FileCheck2,
+  Coins,
+  ArrowRight,
+  Clock,
+} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { usePrefersReducedMotion } from "@/lib/motion";
+
+export interface PapStep {
+  step: number;
+  numberStr: string;
+  title: string;
+  tagline: string;
+  description: string;
+  icon: React.ComponentType<{ className?: string }>;
+  accentColor: string;
+  highlights: string[];
+  metric?: string;
+  metricLabel?: string;
+}
+
+export const PAP_STEPS: PapStep[] = [
+  {
+    step: 1,
+    numberStr: "01",
+    title: "Foundation Sprint",
+    tagline: "Computational Thinking & Core Terminal",
+    description:
+      "Every candidate starts with essential analytical screening and computational foundations. You learn Git version control, Linux command line, and modular algorithmic decomposition with zero prior degree requirements.",
+    icon: Code2,
+    accentColor: "var(--saffron, #FF6A2B)",
+    highlights: ["Logic & Problem Solving", "Git & Linux Terminal", "Mentor Aptitude Review"],
+    metric: "Week 1-3",
+    metricLabel: "Core Sprint",
+  },
+  {
+    step: 2,
+    numberStr: "02",
+    title: "Expert Learning",
+    tagline: "30 Hours/Week Intensive Immersion",
+    description:
+      "Engage in rigorous engineering practice with dedicated senior mentors in our physical Nagercoil lab. The curriculum blends 10 hours of live instruction, 10 hours of hands-on lab code drills, and 10 hours of project milestones every week.",
+    icon: Clock,
+    accentColor: "var(--mint, #7BE0AD)",
+    highlights: ["Daily Live Mentorship", "Physical Lab in Nagercoil", "Peer Pair Programming"],
+    metric: "30 hrs",
+    metricLabel: "Weekly Commitment",
+  },
+  {
+    step: 3,
+    numberStr: "03",
+    title: "Shared Success (₹0 Upfront)",
+    tagline: "Zero Tuition Risk & Zero Bank Loans",
+    description:
+      "We put our conviction behind your career. You pay ₹0 upfront tuition fee to attend. There are no hidden third-party NBFC loans, no debt encumbrances, and no personal bank liabilities signed in your name.",
+    icon: ShieldCheck,
+    accentColor: "var(--mint, #7BE0AD)",
+    highlights: ["₹0 Upfront Tuition", "No NBFC Loan Liabilities", "Direct Mutual Agreement"],
+    metric: "₹0",
+    metricLabel: "Upfront Cost",
+  },
+  {
+    step: 4,
+    numberStr: "04",
+    title: "Placement Drills",
+    tagline: "System Design & Technical Mock Interviews",
+    description:
+      "Prepare for demanding hiring evaluations. We conduct full Data Structures & Algorithms reviews, architectural problem solving, live whiteboard simulations, and thorough ATS-optimised resume rebuilding.",
+    icon: Target,
+    accentColor: "var(--saffron, #FF6A2B)",
+    highlights: ["DSA & Architecture", "1-on-1 Mock Drills", "ATS Resume Overhaul"],
+    metric: "100%",
+    metricLabel: "Interview Preparedness",
+  },
+  {
+    step: 5,
+    numberStr: "05",
+    title: "Agile Tribers Commercial Internship",
+    tagline: "Production Deliverables, Not Toy Projects",
+    description:
+      "Transition from student assignments to production software at our commercial product studio, Agile Tribers. You work alongside full-time engineers, submit pull requests, resolve QA issues, and build verifiable GitHub commits.",
+    icon: Briefcase,
+    accentColor: "#38BDF8",
+    highlights: ["Live Client Codebases", "Verifiable GitHub Commits", "Agile Sprint Cycles"],
+    metric: "Live Code",
+    metricLabel: "Real Deliverables",
+  },
+  {
+    step: 6,
+    numberStr: "06",
+    title: "Interview Scheduling",
+    tagline: "Direct Introductions to Hiring Networks",
+    description:
+      "Our corporate placement cell actively introduces your portfolio to partner tech organisations, regional IT powerhouses, and pan-India engineering startups looking for pre-trained full-stack talent.",
+    icon: Users2,
+    accentColor: "var(--saffron, #FF6A2B)",
+    highlights: ["Direct Partner Referrals", "Coordinated Interview Slots", "HR Salary Strategy"],
+    metric: "8+ Partners",
+    metricLabel: "Active Hiring Pool",
+  },
+  {
+    step: 7,
+    numberStr: "07",
+    title: "Offer Letter Accepted",
+    tagline: "Your Engineering Career Begins",
+    description:
+      "You receive, evaluate, and accept an official, verifiable software employment offer letter. The milestone is only reached when you formally sign your employment contract.",
+    icon: FileCheck2,
+    accentColor: "var(--mint, #7BE0AD)",
+    highlights: ["Official Tech Job Offer", "Verified Employment Contract", "Milestone Reached"],
+    metric: "Hired!",
+    metricLabel: "Career Launch",
+  },
+  {
+    step: 8,
+    numberStr: "08",
+    title: "Fixed ₹40k Flat Placement Fee",
+    tagline: "Transparent, Capped & Settled",
+    description:
+      "Once you are hired and receive your compensation, you settle our flat fee of ₹40,000. Unlike traditional Income Share Agreements (ISAs) that deduct 15–20% of your earnings for years, our fee is completely capped and transparent.",
+    icon: Coins,
+    accentColor: "var(--saffron, #FF6A2B)",
+    highlights: ["Fixed ₹40,000 Flat Fee", "0% Future Salary Deduction", "Zero Ongoing Royalties"],
+    metric: "₹40,000",
+    metricLabel: "Flat Total Cap",
+  },
+];
+
+export interface PapTimelineProps {
+  className?: string;
+  onApplyClick?: () => void;
+}
+
+export function PapTimeline({ className, onApplyClick }: PapTimelineProps) {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [activeStep, setActiveStep] = React.useState(0);
+  const prefersReduced = usePrefersReducedMotion();
+
+  // Scroll Progress linking
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end end"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 280,
+    damping: 32,
+    restDelta: 0.001,
+  });
+
+  const lineHeight = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
+
+  // Detect which step is active via IntersectionObserver
+  React.useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const stepElements = container.querySelectorAll<HTMLElement>("[data-pap-step]");
+    if (stepElements.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const stepIndex = Number(entry.target.getAttribute("data-pap-step"));
+            if (!Number.isNaN(stepIndex)) {
+              setActiveStep(stepIndex);
+            }
+          }
+        });
+      },
+      {
+        rootMargin: "-20% 0px -40% 0px",
+        threshold: 0.1,
+      }
+    );
+
+    stepElements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToStep = (index: number) => {
+    const container = containerRef.current;
+    if (!container) return;
+    const target = container.querySelector<HTMLElement>(`[data-pap-step="${index}"]`);
+    if (target) {
+      target.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "center" });
+    }
+  };
+
+  const currentStepData = PAP_STEPS[activeStep] || PAP_STEPS[0];
+
+  return (
+    <div
+      ref={containerRef}
+      className={cn("relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12", className)}
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        {/* ===================================================================
+            LEFT COLUMN: STICKY PROGRESS & SUMMARY DASHBOARD (Desktop)
+           =================================================================== */}
+        <aside className="lg:col-span-5">
+          <div className="lg:sticky lg:top-28 space-y-6">
+            <div className="rounded-3xl border border-white/10 bg-night-2/95 p-6 sm:p-8 shadow-glass backdrop-blur-md">
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                <Badge variant="mint">PAP Contract Journey</Badge>
+                <div className="font-mono text-sm font-bold text-saffron">
+                  Step 0{activeStep + 1} / 0{PAP_STEPS.length}
+                </div>
+              </div>
+
+              {/* Dynamic Active Step Announcement */}
+              <div className="mt-5 space-y-2">
+                <span className="text-xs font-semibold uppercase tracking-wider text-night-muted">
+                  Active Milestone
+                </span>
+                <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-night-text leading-tight">
+                  {currentStepData.title}
+                </h3>
+                <p className="text-sm font-medium text-saffron">
+                  {currentStepData.tagline}
+                </p>
+              </div>
+
+              {/* Interactive Mini-Stepper */}
+              <div className="mt-6 pt-4 border-t border-white/10">
+                <span className="text-xs font-semibold uppercase tracking-wider text-night-muted block mb-3">
+                  8-Stage Verification Track
+                </span>
+                <div className="grid grid-cols-4 sm:grid-cols-8 gap-1.5" role="tablist" aria-label="Step navigation">
+                  {PAP_STEPS.map((step, idx) => {
+                    const isPassed = idx < activeStep;
+                    const isCurrent = idx === activeStep;
+
+                    return (
+                      <button
+                        key={step.step}
+                        type="button"
+                        role="tab"
+                        aria-selected={isCurrent}
+                        aria-label={`Jump to Step ${step.step}: ${step.title}`}
+                        onClick={() => scrollToStep(idx)}
+                        className={cn(
+                          "flex flex-col items-center justify-center py-2 px-1 rounded-xl text-xs font-bold transition-all duration-200 border",
+                          isCurrent
+                            ? "bg-saffron text-night-1 border-saffron shadow-[0_0_12px_rgba(255,106,43,0.4)] scale-105"
+                            : isPassed
+                            ? "bg-mint/15 text-mint border-mint/30 hover:bg-mint/25"
+                            : "bg-night-1/60 text-night-muted border-white/5 hover:border-white/20 hover:text-night-text"
+                        )}
+                      >
+                        <span>{step.numberStr}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Key Highlights Card */}
+              <div className="mt-6 rounded-2xl border border-white/5 bg-night-3/70 p-4 space-y-2.5">
+                <div className="flex items-center gap-2 text-xs font-bold text-mint uppercase tracking-wider">
+                  <CheckCircle2 className="h-4 w-4 shrink-0" />
+                  <span>The Karka Guarantee</span>
+                </div>
+                <div className="space-y-1.5 text-xs text-night-muted">
+                  <div className="flex items-center justify-between">
+                    <span>Upfront Tuition</span>
+                    <span className="font-bold text-mint">₹0 (Zero Risk)</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Placement Fee</span>
+                    <span className="font-bold text-saffron">Fixed ₹40,000 Flat</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Third-Party Loans</span>
+                    <span className="font-bold text-night-text">None (No NBFCs)</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Ongoing Deductions</span>
+                    <span className="font-bold text-night-text">0% of salary</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="mt-6 pt-2">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  onClick={onApplyClick}
+                  className="w-full font-bold shadow-glow flex items-center justify-center gap-2"
+                >
+                  <Sparkles className="h-4 w-4" />
+                  <span>Apply with ₹0 Upfront</span>
+                  <ArrowRight className="h-4 w-4 ml-1" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        {/* ===================================================================
+            RIGHT COLUMN: 8-STEP SCROLL-LINKED TIMELINE CARDS
+           =================================================================== */}
+        <div className="lg:col-span-7 relative">
+          {/* Animated Vertical Progress Line Container */}
+          <div
+            className="absolute left-6 sm:left-8 top-6 bottom-6 w-0.5 bg-white/10 -translate-x-1/2 select-none"
+            aria-hidden="true"
+          >
+            {/* Animated drawing progress bar */}
+            {!prefersReduced ? (
+              <motion.div
+                style={{ height: lineHeight }}
+                className="w-full bg-gradient-to-b from-saffron via-mint to-saffron rounded-full shadow-[0_0_12px_rgba(255,106,43,0.6)]"
+              />
+            ) : (
+              <div
+                style={{ height: `${((activeStep + 1) / PAP_STEPS.length) * 100}%` }}
+                className="w-full bg-saffron rounded-full"
+              />
+            )}
+          </div>
+
+          {/* Steps List */}
+          <ol className="space-y-8 sm:space-y-12 list-none p-0 m-0">
+            {PAP_STEPS.map((item, index) => {
+              const Icon = item.icon;
+              const isCurrent = activeStep === index;
+              const isPassed = index < activeStep;
+
+              return (
+                <li
+                  key={item.step}
+                  data-pap-step={index}
+                  className="relative pl-14 sm:pl-20 transition-all duration-300"
+                >
+                  {/* Step Node Marker on the Line */}
+                  <div
+                    aria-hidden="true"
+                    className={cn(
+                      "absolute left-6 sm:left-8 top-6 -translate-x-1/2 -translate-y-1/2 h-10 w-10 sm:h-12 sm:w-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 z-10",
+                      isCurrent
+                        ? "border-saffron bg-night-1 shadow-[0_0_20px_rgba(255,106,43,0.7)] scale-110"
+                        : isPassed
+                        ? "border-mint bg-forest/80 text-mint"
+                        : "border-white/20 bg-night-2 text-night-muted"
+                    )}
+                  >
+                    <Icon
+                      className={cn(
+                        "h-5 w-5 transition-colors duration-200",
+                        isCurrent ? "text-saffron" : isPassed ? "text-mint" : "text-night-muted"
+                      )}
+                    />
+                  </div>
+
+                  {/* Step Glass Card */}
+                  <div
+                    className={cn(
+                      "rounded-3xl border p-6 sm:p-8 backdrop-blur-md transition-all duration-300 shadow-glass",
+                      isCurrent
+                        ? "border-saffron/50 bg-night-2/95 shadow-[0_12px_40px_-10px_rgba(255,106,43,0.22)] ring-1 ring-saffron/30 scale-[1.01]"
+                        : "border-white/10 bg-night-2/80 hover:border-white/25 hover:bg-night-2/90"
+                    )}
+                  >
+                    {/* Header: Number, Step Title, Badge */}
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                      <div className="flex items-center gap-3">
+                        <span className="font-mono text-2xl sm:text-3xl font-extrabold text-saffron">
+                          {item.numberStr}
+                        </span>
+                        <h4 className="font-display text-xl sm:text-2xl font-bold text-night-text tracking-tight">
+                          {item.title}
+                        </h4>
+                      </div>
+
+                      {item.metric && (
+                        <div className="rounded-full border border-mint/30 bg-mint/10 px-3 py-1 text-xs font-bold text-mint flex items-center gap-1.5">
+                          <span>{item.metric}</span>
+                          <span className="text-white/30">•</span>
+                          <span className="text-[10px] text-night-muted font-normal uppercase">
+                            {item.metricLabel}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Tagline */}
+                    <p className="text-sm font-medium text-saffron/90 mb-3">
+                      {item.tagline}
+                    </p>
+
+                    {/* Description */}
+                    <p className="text-sm text-night-muted leading-relaxed mb-5">
+                      {item.description}
+                    </p>
+
+                    {/* Highlights Pills */}
+                    <div className="flex flex-wrap gap-2 pt-2 border-t border-white/5">
+                      {item.highlights.map((h, i) => (
+                        <span
+                          key={i}
+                          className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-night-3/60 px-3 py-1 text-xs font-medium text-night-text"
+                        >
+                          <span className="h-1.5 w-1.5 rounded-full bg-mint" />
+                          <span>{h}</span>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default PapTimeline;

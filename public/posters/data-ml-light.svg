@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%" fill="none" role="img" aria-label="Data Science & ML Track 3D Crystal Visual Light">
+  <defs>
+    <radialGradient id="data-glow-light-alias" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFD166" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#FF6A2B" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#F7F3EC" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft-shadow-data-alias" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#14171F" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="#F7F3EC"/>
+  <circle cx="200" cy="200" r="160" fill="url(#data-glow-light-alias)"/>
+  <ellipse cx="200" cy="225" rx="140" ry="48" stroke="#B8964E" stroke-width="1.5" stroke-dasharray="6 6" stroke-opacity="0.4"/>
+  <g filter="url(#soft-shadow-data-alias)">
+    <polygon points="200,265 310,225 200,185 90,225" fill="#FFFFFF" stroke="#D5CDBF" stroke-width="1.2"/>
+    <polygon points="90,225 200,265 200,280 90,240" fill="#C7BDAA"/>
+    <polygon points="200,265 310,225 310,240 200,280" fill="#D8CFBE"/>
+  </g>
+  <g transform="translate(-80, 25)" filter="url(#soft-shadow-data-alias)">
+    <polygon points="200,200 220,192 200,184 180,192" fill="#FFE082"/>
+    <polygon points="180,192 200,200 200,240 180,232" fill="#FFB300"/>
+    <polygon points="200,200 220,192 220,232 200,240" fill="#FFC107"/>
+  </g>
+  <g transform="translate(-25, 0)" filter="url(#soft-shadow-data-alias)">
+    <polygon points="200,170 220,162 200,154 180,162" fill="#FFE082"/>
+    <polygon points="180,162 200,170 200,240 180,232" fill="#FFB300"/>
+    <polygon points="200,170 220,162 220,232 200,240" fill="#FFC107"/>
+  </g>
+  <g transform="translate(30, -25)" filter="url(#soft-shadow-data-alias)">
+    <polygon points="200,140 220,132 200,124 180,132" fill="#FFE082"/>
+    <polygon points="180,132 200,140 200,240 180,232" fill="#FFB300"/>
+    <polygon points="200,140 220,132 220,232 200,240" fill="#FFC107"/>
+  </g>
+  <g transform="translate(85, -50)" filter="url(#soft-shadow-data-alias)">
+    <polygon points="200,110 220,102 200,94 180,102" fill="#FFE082"/>
+    <polygon points="180,102 200,110 200,240 180,232" fill="#FFB300"/>
+    <polygon points="200,110 220,102 220,232 200,240" fill="#FFC107"/>
+  </g>
+  <polyline points="120,185 175,150 230,115 285,75" stroke="#0B6B45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <g filter="url(#soft-shadow-data-alias)">
+    <polygon points="120,170 128,185 120,200 112,185" fill="#A63A0B"/>
+    <polygon points="175,135 183,150 175,165 167,150" fill="#A63A0B"/>
+    <polygon points="230,100 238,115 230,130 222,115" fill="#A63A0B"/>
+    <polygon points="285,60 293,75 285,90 277,75" fill="#B8964E"/>
+  </g>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%" fill="none" role="img" aria-label="Cloud & DevOps Track 3D Cloud Cluster Visual Dark">
+  <defs>
+    <radialGradient id="cloud-glow-dark" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#60A5FA" stop-opacity="0.28"/>
+      <stop offset="60%" stop-color="#7BE0AD" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0B0F14" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cloud-grad-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#93C5FD"/>
+      <stop offset="50%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <filter id="blue-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="400" height="400" rx="32" fill="#0B0F14"/>
+  <circle cx="200" cy="200" r="160" fill="url(#cloud-glow-dark)"/>
+
+  <!-- CI/CD Orbital Ring -->
+  <ellipse cx="200" cy="205" rx="145" ry="46" stroke="#38BDF8" stroke-width="2" stroke-dasharray="8 6" stroke-opacity="0.7" transform="rotate(-15 200 205)" filter="url(#blue-glow)"/>
+
+  <!-- Stylized Procedural Volumetric Cloud Cluster -->
+  <g filter="url(#blue-glow)">
+    <circle cx="200" cy="190" r="48" fill="url(#cloud-grad-dark)" stroke="#BFDBFE" stroke-width="2"/>
+    <circle cx="155" cy="205" r="36" fill="url(#cloud-grad-dark)" stroke="#BFDBFE" stroke-width="1.5"/>
+    <circle cx="245" cy="200" r="38" fill="url(#cloud-grad-dark)" stroke="#BFDBFE" stroke-width="1.5"/>
+    <circle cx="178" cy="165" r="28" fill="#93C5FD" opacity="0.9"/>
+    <circle cx="220" cy="165" r="30" fill="#93C5FD" opacity="0.9"/>
+    <!-- Cloud Highlight Base -->
+    <rect x="150" y="220" width="100" height="18" rx="9" fill="#1E40AF" opacity="0.6"/>
+  </g>
+
+  <!-- Mechanical Gear 1 (Upper Right) -->
+  <g transform="translate(265, 135)" filter="url(#blue-glow)">
+    <circle cx="0" cy="0" r="26" fill="#0F3D2E" stroke="#7BE0AD" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="10" fill="#0B0F14" stroke="#7BE0AD" stroke-width="1.5"/>
+    <!-- 6 Cog Teeth -->
+    <rect x="-4" y="-32" width="8" height="8" rx="2" fill="#7BE0AD"/>
+    <rect x="-4" y="24" width="8" height="8" rx="2" fill="#7BE0AD"/>
+    <rect x="24" y="-4" width="8" height="8" rx="2" fill="#7BE0AD"/>
+    <rect x="-32" y="-4" width="8" height="8" rx="2" fill="#7BE0AD"/>
+    <rect x="16" y="16" width="8" height="8" rx="2" fill="#7BE0AD" transform="rotate(45 20 20)"/>
+    <rect x="-24" y="-24" width="8" height="8" rx="2" fill="#7BE0AD" transform="rotate(45 -20 -20)"/>
+  </g>
+
+  <!-- Mechanical Gear 2 (Lower Left) -->
+  <g transform="translate(130, 260)" filter="url(#blue-glow)">
+    <circle cx="0" cy="0" r="20" fill="#0F3D2E" stroke="#7BE0AD" stroke-width="2"/>
+    <circle cx="0" cy="0" r="8" fill="#0B0F14" stroke="#7BE0AD" stroke-width="1.5"/>
+    <!-- 4 Cog Teeth -->
+    <rect x="-3.5" y="-25" width="7" height="6" rx="2" fill="#7BE0AD"/>
+    <rect x="-3.5" y="19" width="7" height="6" rx="2" fill="#7BE0AD"/>
+    <rect x="19" y="-3.5" width="6" height="7" rx="2" fill="#7BE0AD"/>
+    <rect x="-25" y="-3.5" width="6" height="7" rx="2" fill="#7BE0AD"/>
+  </g>
+</svg>
