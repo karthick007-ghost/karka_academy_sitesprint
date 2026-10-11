@@ -1,6 +1,6 @@
 import React from "react";
-import { siteConfig } from "@/content/site";
 import { StatCounter } from "@/components/ui/stat-counter";
+import { HiringPartnersMarquee } from "./hiring-partners-marquee";
 
 export function ProofBar() {
   const stats = [
@@ -33,21 +33,12 @@ export function ProofBar() {
           ))}
         </div>
 
-        {/* Plain Text Alumni Hiring Partners Bar (Zero Third-Party Logos) */}
+        {/* Professional Moving Alumni Hiring Partners Marquee (Left to Right) */}
         <div className="mt-10 pt-8 border-t border-ui/15 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-muted mb-4">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted mb-5">
             Alumni Hired Across Renowned Technology Teams (Verified Records)
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-            {siteConfig.hiringPartnerNames.map((name) => (
-              <span
-                key={name}
-                className="inline-flex items-center rounded-pill border border-ui/15 bg-base px-4 py-2 text-xs sm:text-sm font-semibold text-primary hover:border-accent/40 transition-colors shadow-sm"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
+          <HiringPartnersMarquee />
         </div>
       </div>
     </section>
