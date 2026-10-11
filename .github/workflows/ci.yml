@@ -1,0 +1,49 @@
+name: CI Pipeline & Quality Gates
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    name: Verify All Gates
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck (Strict TS)
+        run: npm run typecheck
+
+      - name: Lint (ESLint & Accessibility)
+        run: npm run lint
+
+      - name: Design System Token Contrast
+        run: npm run test:contrast
+
+      - name: Verify Content Claims & Integrity
+        run: npm run verify:content
+
+      - name: Verify Originality & Provenance
+        run: npm run verify:originality
+
+      - name: Unit & Component Tests
+        run: npm run test
+
+      - name: Security & Abuse Suite
+        run: npm run test:sec
+
+      - name: Production Build
+        run: npm run build

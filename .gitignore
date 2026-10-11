@@ -1,0 +1,11 @@
+node_modules/
+.next/
+.env*
+!.env.example
+docs/site-audit/
+tools/site-audit/node_modules/
+coverage/
+playwright-report/
+test-results/
+.DS_Store
+*.tsbuildinfo

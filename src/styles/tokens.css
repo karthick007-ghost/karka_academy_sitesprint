@@ -1,0 +1,48 @@
+/* Design System Tokens - Karka Academy Redesign */
+/* Verified WCAG 2.2 AA Contrast Ratios */
+
+:root {
+  /* Light "paper" surfaces */
+  --paper: #F7F3EC;
+  --paper-2: #EFE8DB;
+  --ink: #14171F;
+  --ink-2: #4A4F5C;
+  --ink-3: #6B6F7B;
+
+  /* Brand Accents */
+  --saffron: #FF6A2B;
+  --saffron-ink: #A63A0B; /* Text-safe variant for light surfaces */
+  --forest: #0F3D2E;      /* Deep green premium anchor */
+  --gold: #B8964E;
+  --gold-ink: #7A5F24;    /* Decorative/accent text */
+
+  /* Dark "night" surfaces (Hero, PAP, Infini) */
+  --night: #0B0F14;
+  --night-2: #121821;
+  --night-text: #F3EEE4;
+  --night-muted: #A9B0BD;
+  --mint: #7BE0AD;
+}
+
+/* Glassmorphism utility for night sections */
+.glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.04));
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass {
+    background: var(--night-2);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: var(--night-2);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
