@@ -40,19 +40,20 @@ export function TrackFinder() {
   };
 
   return (
-    <div className="relative mx-auto w-full max-w-3xl rounded-3xl border border-white/10 bg-night-2 p-6 sm:p-10 shadow-glass">
+    <div className="relative mx-auto w-full max-w-3xl rounded-3xl border border-border-soft bg-bg-elev p-6 sm:p-10 shadow-sm text-text">
       {/* Quiz Progress */}
       {step <= 4 && (
         <div className="mb-8">
-          <div className="flex items-center justify-between text-xs font-semibold text-night-muted uppercase tracking-wider mb-2">
+          <div className="flex items-center justify-between text-xs font-semibold text-text-muted uppercase tracking-wider mb-2">
             <span>Career Finder Quiz</span>
             <span>Step {step} of 4</span>
           </div>
-          <div className="h-1.5 w-full rounded-full bg-night-3 overflow-hidden">
+          <div className="h-1.5 w-full rounded-full bg-bg-sunken overflow-hidden">
             <div
               className="h-full bg-saffron transition-all duration-300"
               style={{ width: `${(step / 4) * 100}%` }}
               role="progressbar"
+              aria-label="Career finder quiz progress"
               aria-valuenow={(step / 4) * 100}
               aria-valuemin={0}
               aria-valuemax={100}
@@ -64,10 +65,10 @@ export function TrackFinder() {
       {/* Step 1 */}
       {step === 1 && (
         <div className="animate-fade-in">
-          <h3 className="text-xl sm:text-2xl font-bold text-night-text mb-2">
+          <h3 className="text-xl sm:text-2xl font-bold text-text mb-2">
             Where are you currently at in your journey?
           </h3>
-          <p className="text-sm text-night-muted mb-6">
+          <p className="text-sm text-text-muted mb-6">
             We offer dedicated paths tailored to different stages of learning and employment.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -81,10 +82,10 @@ export function TrackFinder() {
                 key={opt.id}
                 type="button"
                 onClick={() => handleSelect("status", opt.id)}
-                className="flex flex-col text-left p-4 rounded-2xl border border-white/10 bg-night-3 hover:border-saffron/50 hover:bg-night-3/80 focus:outline-none focus:ring-2 focus:ring-saffron transition text-night-text"
+                className="flex flex-col text-left p-4 rounded-2xl border border-border-soft bg-bg-sunken hover:border-accent hover:bg-bg-sunken/80 focus:outline-none focus:ring-2 focus:ring-accent transition text-text"
               >
-                <span className="font-semibold text-base text-night-text">{opt.title}</span>
-                <span className="text-xs text-night-muted mt-1">{opt.desc}</span>
+                <span className="font-semibold text-base text-text">{opt.title}</span>
+                <span className="text-xs text-text-muted mt-1">{opt.desc}</span>
               </button>
             ))}
           </div>
@@ -94,10 +95,10 @@ export function TrackFinder() {
       {/* Step 2 */}
       {step === 2 && (
         <div className="animate-fade-in">
-          <h3 className="text-xl sm:text-2xl font-bold text-night-text mb-2">
+          <h3 className="text-xl sm:text-2xl font-bold text-text mb-2">
             What area of technology interests you most?
           </h3>
-          <p className="text-sm text-night-muted mb-6">
+          <p className="text-sm text-text-muted mb-6">
             Choose what you naturally enjoy creating or exploring.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -113,17 +114,17 @@ export function TrackFinder() {
                 key={opt.id}
                 type="button"
                 onClick={() => handleSelect("interest", opt.id)}
-                className="flex flex-col text-left p-4 rounded-2xl border border-white/10 bg-night-3 hover:border-saffron/50 hover:bg-night-3/80 focus:outline-none focus:ring-2 focus:ring-saffron transition text-night-text"
+                className="flex flex-col text-left p-4 rounded-2xl border border-border-soft bg-bg-sunken hover:border-accent hover:bg-bg-sunken/80 focus:outline-none focus:ring-2 focus:ring-accent transition text-text"
               >
-                <span className="font-semibold text-base text-night-text">{opt.title}</span>
-                <span className="text-xs text-night-muted mt-1">{opt.desc}</span>
+                <span className="font-semibold text-base text-text">{opt.title}</span>
+                <span className="text-xs text-text-muted mt-1">{opt.desc}</span>
               </button>
             ))}
           </div>
           <button
             type="button"
             onClick={() => setStep(1)}
-            className="mt-6 text-xs text-night-muted hover:text-night-text underline"
+            className="mt-6 text-xs text-text-muted hover:text-text underline"
           >
             ← Back to previous question
           </button>
@@ -133,10 +134,10 @@ export function TrackFinder() {
       {/* Step 3 */}
       {step === 3 && (
         <div className="animate-fade-in">
-          <h3 className="text-xl sm:text-2xl font-bold text-night-text mb-2">
+          <h3 className="text-xl sm:text-2xl font-bold text-text mb-2">
             How comfortable are you with programming right now?
           </h3>
-          <p className="text-sm text-night-muted mb-6">
+          <p className="text-sm text-text-muted mb-6">
             Be completely honest — our programs are designed for all levels from scratch.
           </p>
           <div className="grid grid-cols-1 gap-3">
@@ -149,17 +150,17 @@ export function TrackFinder() {
                 key={opt.id}
                 type="button"
                 onClick={() => handleSelect("codingComfort", opt.id)}
-                className="flex flex-col text-left p-4 rounded-2xl border border-white/10 bg-night-3 hover:border-saffron/50 hover:bg-night-3/80 focus:outline-none focus:ring-2 focus:ring-saffron transition text-night-text"
+                className="flex flex-col text-left p-4 rounded-2xl border border-border-soft bg-bg-sunken hover:border-accent hover:bg-bg-sunken/80 focus:outline-none focus:ring-2 focus:ring-accent transition text-text"
               >
-                <span className="font-semibold text-base text-night-text">{opt.title}</span>
-                <span className="text-xs text-night-muted mt-1">{opt.desc}</span>
+                <span className="font-semibold text-base text-text">{opt.title}</span>
+                <span className="text-xs text-text-muted mt-1">{opt.desc}</span>
               </button>
             ))}
           </div>
           <button
             type="button"
             onClick={() => setStep(2)}
-            className="mt-6 text-xs text-night-muted hover:text-night-text underline"
+            className="mt-6 text-xs text-text-muted hover:text-text underline"
           >
             ← Back to previous question
           </button>
@@ -169,10 +170,10 @@ export function TrackFinder() {
       {/* Step 4 */}
       {step === 4 && (
         <div className="animate-fade-in">
-          <h3 className="text-xl sm:text-2xl font-bold text-night-text mb-2">
+          <h3 className="text-xl sm:text-2xl font-bold text-text mb-2">
             What is your primary goal right now?
           </h3>
-          <p className="text-sm text-night-muted mb-6">
+          <p className="text-sm text-text-muted mb-6">
             We will calibrate the placement model and internship intensity to match.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -186,17 +187,17 @@ export function TrackFinder() {
                 key={opt.id}
                 type="button"
                 onClick={() => handleSelect("goal", opt.id)}
-                className="flex flex-col text-left p-4 rounded-2xl border border-white/10 bg-night-3 hover:border-saffron/50 hover:bg-night-3/80 focus:outline-none focus:ring-2 focus:ring-saffron transition text-night-text"
+                className="flex flex-col text-left p-4 rounded-2xl border border-border-soft bg-bg-sunken hover:border-accent hover:bg-bg-sunken/80 focus:outline-none focus:ring-2 focus:ring-accent transition text-text"
               >
-                <span className="font-semibold text-base text-night-text">{opt.title}</span>
-                <span className="text-xs text-night-muted mt-1">{opt.desc}</span>
+                <span className="font-semibold text-base text-text">{opt.title}</span>
+                <span className="text-xs text-text-muted mt-1">{opt.desc}</span>
               </button>
             ))}
           </div>
           <button
             type="button"
             onClick={() => setStep(3)}
-            className="mt-6 text-xs text-night-muted hover:text-night-text underline"
+            className="mt-6 text-xs text-text-muted hover:text-text underline"
           >
             ← Back to previous question
           </button>
@@ -208,19 +209,19 @@ export function TrackFinder() {
         <div className="animate-fade-in text-left">
           <div className="flex items-center gap-2 mb-3">
             <Badge variant="saffron">Recommended For You</Badge>
-            <span className="text-xs text-night-muted font-medium">Personalized Track</span>
+            <span className="text-xs text-text-muted font-medium">Personalized Track</span>
           </div>
 
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-night-text">
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-text">
             {result.trackTitle}
           </h3>
 
-          <p className="mt-3 text-sm sm:text-base text-night-muted leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-text-muted leading-relaxed">
             {result.reason}
           </p>
 
-          <div className="mt-6 rounded-2xl border border-white/10 bg-night-3 p-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-night-muted block mb-3">
+          <div className="mt-6 rounded-2xl border border-border-soft bg-bg-sunken p-4">
+            <span className="text-xs font-semibold uppercase tracking-wider text-text-muted block mb-3">
               Suggested Courses To Explore:
             </span>
             <div className="flex flex-wrap gap-2">
@@ -228,7 +229,7 @@ export function TrackFinder() {
                 <Link
                   key={cSlug}
                   href={`/courses/${cSlug}`}
-                  className="inline-flex items-center gap-1.5 rounded-pill border border-mint/30 bg-mint/10 px-3.5 py-1.5 text-xs font-semibold text-mint hover:bg-mint/20 transition"
+                  className="inline-flex items-center gap-1.5 rounded-pill border border-positive-text/30 bg-positive-text/10 px-3.5 py-1.5 text-xs font-semibold text-positive-text hover:bg-positive-text/20 transition"
                 >
                   <span>View Syllabus</span>
                   <span aria-hidden="true">→</span>
@@ -241,34 +242,35 @@ export function TrackFinder() {
           {!showApplyForm ? (
             <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <Button
+                magnetic
                 variant="primary"
                 size="lg"
-                className="shadow-glow"
+                className="shadow-subtle"
                 onClick={() => setShowApplyForm(true)}
               >
                 Apply for this Track
               </Button>
               <Link href={`/courses`}>
-                <Button variant="outline" size="lg" className="w-full">
+                <Button magnetic variant="outline" size="lg" className="w-full">
                   Browse All 37 Courses
                 </Button>
               </Link>
               <button
                 type="button"
                 onClick={handleReset}
-                className="text-xs text-night-muted hover:text-night-text underline text-center sm:ml-auto py-2"
+                className="text-xs text-text-muted hover:text-text underline text-center sm:ml-auto py-2"
               >
                 Retake Quiz
               </button>
             </div>
           ) : (
-            <div className="mt-8 pt-6 border-t border-white/10">
+            <div className="mt-8 pt-6 border-t border-border-soft">
               <div className="flex items-center justify-between mb-4">
-                <h4 className="text-lg font-bold text-night-text">Apply for {result.trackTitle}</h4>
+                <h4 className="text-lg font-bold text-text">Apply for {result.trackTitle}</h4>
                 <button
                   type="button"
                   onClick={() => setShowApplyForm(false)}
-                  className="text-xs text-night-muted hover:text-night-text underline"
+                  className="text-xs text-text-muted hover:text-text underline"
                 >
                   Close Form
                 </button>
@@ -285,3 +287,5 @@ export function TrackFinder() {
     </div>
   );
 }
+
+export default TrackFinder;

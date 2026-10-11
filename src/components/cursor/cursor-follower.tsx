@@ -43,17 +43,22 @@ export function CursorFollower({
 
   useEffect(() => {
     if (!canRunEffects || !isReady) {
+      document.body.classList.remove("custom-cursor-active");
       return;
     }
+
+    // Activate custom cursor mode (hides OS cursor via CSS cursor: none)
+    document.body.classList.add("custom-cursor-active");
 
     const handlePointerMove = (e: PointerEvent) => {
       // Reject touch events directly if simulated
       if (e.pointerType === "touch") {
         setIsVisible(false);
+        document.body.classList.remove("custom-cursor-active");
         return;
       }
 
-      // Check form inputs: hide custom follower completely so native caret is unobscured
+      // Check form inputs: hide custom follower completely so native text caret is unobscured
       if (isFormInput(e.target)) {
         setIsVisible(false);
         setIsInteractive(false);
@@ -95,10 +100,12 @@ export function CursorFollower({
       setIsVisible(false);
       setIsInteractive(false);
       setContextText(null);
+      document.body.classList.remove("custom-cursor-active");
     };
 
     const handleMouseEnter = () => {
       setIsVisible(true);
+      document.body.classList.add("custom-cursor-active");
     };
 
     window.addEventListener("pointermove", handlePointerMove, { passive: true });
@@ -106,6 +113,7 @@ export function CursorFollower({
     document.documentElement.addEventListener("mouseenter", handleMouseEnter);
 
     return () => {
+      document.body.classList.remove("custom-cursor-active");
       window.removeEventListener("pointermove", handlePointerMove);
       document.documentElement.removeEventListener("mouseleave", handleMouseLeave);
       document.documentElement.removeEventListener("mouseenter", handleMouseEnter);
@@ -133,9 +141,15 @@ export function CursorFollower({
       transition={{ opacity: { duration: 0.15 } }}
     >
       <div className={`relative flex items-center justify-center ${className}`}>
-        {/* Subtle center precision dot when in normal mode */}
-        {!contextText && !isInteractive && (
-          <div className="absolute h-1.5 w-1.5 rounded-full bg-saffron dark:bg-mint" />
+        {/* Precision cursor dot for instant click targeting */}
+        {!contextText && (
+          <div
+            className={`absolute h-2 w-2 rounded-full transition-all duration-150 ${
+              isInteractive
+                ? "bg-saffron scale-125 dark:bg-mint shadow-sm"
+                : "bg-saffron dark:bg-mint shadow-[0_0_8px_rgba(235,94,40,0.5)]"
+            }`}
+          />
         )}
 
         {/* Dynamic Trailing Ring */}

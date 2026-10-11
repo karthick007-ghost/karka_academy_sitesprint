@@ -878,6 +878,8 @@ export default function DevKitPage() {
               <Badge variant="saffron">Saffron Text Safe</Badge>
               <Badge variant="forest">Forest Brand</Badge>
               <Badge variant="night">Night Mint</Badge>
+              <Badge variant="mint">Fresh Mint Light Green</Badge>
+              <Badge variant="burgundy">Burgundy Old Money</Badge>
             </div>
           </div>
 

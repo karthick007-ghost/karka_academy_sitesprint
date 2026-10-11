@@ -215,83 +215,90 @@ export function PapTimeline({ className, onApplyClick }: PapTimelineProps) {
            =================================================================== */}
         <aside className="lg:col-span-5">
           <div className="lg:sticky lg:top-28 space-y-6">
-            <div className="rounded-3xl border border-white/10 bg-night-2/95 p-6 sm:p-8 shadow-glass backdrop-blur-md">
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <div className="rounded-3xl border border-ui/15 bg-elev p-6 sm:p-8 shadow-subtle backdrop-blur-md">
+              <div className="flex items-center justify-between border-b border-ui/15 pb-4">
                 <Badge variant="mint">PAP Contract Journey</Badge>
-                <div className="font-mono text-sm font-bold text-saffron">
+                <div className="font-mono text-sm font-bold text-accent-text">
                   Step 0{activeStep + 1} / 0{PAP_STEPS.length}
                 </div>
               </div>
 
               {/* Dynamic Active Step Announcement */}
               <div className="mt-5 space-y-2">
-                <span className="text-xs font-semibold uppercase tracking-wider text-night-muted">
+                <span className="text-xs font-semibold uppercase tracking-wider text-muted">
                   Active Milestone
                 </span>
-                <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-night-text leading-tight">
+                <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-primary leading-tight">
                   {currentStepData.title}
                 </h3>
-                <p className="text-sm font-medium text-saffron">
+                <p className="text-sm font-medium text-accent-text">
                   {currentStepData.tagline}
                 </p>
               </div>
 
               {/* Interactive Mini-Stepper */}
-              <div className="mt-6 pt-4 border-t border-white/10">
-                <span className="text-xs font-semibold uppercase tracking-wider text-night-muted block mb-3">
+              <div className="mt-6 pt-4 border-t border-ui/15">
+                <span className="text-xs font-semibold uppercase tracking-wider text-muted block mb-3">
                   8-Stage Verification Track
                 </span>
-                <div className="grid grid-cols-4 sm:grid-cols-8 gap-1.5" role="tablist" aria-label="Step navigation">
-                  {PAP_STEPS.map((step, idx) => {
-                    const isPassed = idx < activeStep;
-                    const isCurrent = idx === activeStep;
+                <div className="relative">
+                  {/* Burgundy paint spray behind mini-stepper tabs */}
+                  <div
+                    className="absolute -inset-2.5 rounded-2xl bg-[radial-gradient(ellipse_at_center,rgba(114,32,48,0.32)_0%,rgba(114,32,48,0.10)_50%,transparent_75%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(226,125,144,0.30)_0%,rgba(226,125,144,0.10)_50%,transparent_75%)] blur-lg pointer-events-none -z-10"
+                    aria-hidden="true"
+                  />
+                  <div className="grid grid-cols-4 sm:grid-cols-8 gap-1.5" role="tablist" aria-label="Step navigation">
+                    {PAP_STEPS.map((step, idx) => {
+                      const isPassed = idx < activeStep;
+                      const isCurrent = idx === activeStep;
 
-                    return (
-                      <button
-                        key={step.step}
-                        type="button"
-                        role="tab"
-                        aria-selected={isCurrent}
-                        aria-label={`Jump to Step ${step.step}: ${step.title}`}
-                        onClick={() => scrollToStep(idx)}
-                        className={cn(
-                          "flex flex-col items-center justify-center py-2 px-1 rounded-xl text-xs font-bold transition-all duration-200 border",
-                          isCurrent
-                            ? "bg-saffron text-night-1 border-saffron shadow-[0_0_12px_rgba(255,106,43,0.4)] scale-105"
-                            : isPassed
-                            ? "bg-mint/15 text-mint border-mint/30 hover:bg-mint/25"
-                            : "bg-night-1/60 text-night-muted border-white/5 hover:border-white/20 hover:text-night-text"
-                        )}
-                      >
-                        <span>{step.numberStr}</span>
-                      </button>
-                    );
-                  })}
+                      return (
+                        <button
+                          key={step.step}
+                          type="button"
+                          role="tab"
+                          aria-selected={isCurrent}
+                          aria-label={`Jump to Step ${step.step}: ${step.title}`}
+                          onClick={() => scrollToStep(idx)}
+                          className={cn(
+                            "flex flex-col items-center justify-center py-2 px-1 rounded-xl text-xs font-bold transition-all duration-200 border",
+                            isCurrent
+                              ? "bg-accent text-on-accent border-accent shadow-sm scale-105"
+                              : isPassed
+                              ? "bg-positive-text/10 text-positive-text border-positive-text/20 hover:bg-positive-text/20"
+                              : "bg-sunken text-muted border-ui/15 hover:border-ui/40 hover:text-primary"
+                          )}
+                        >
+                          <span>{step.numberStr}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
 
-              {/* Key Highlights Card */}
-              <div className="mt-6 rounded-2xl border border-white/5 bg-night-3/70 p-4 space-y-2.5">
-                <div className="flex items-center gap-2 text-xs font-bold text-mint uppercase tracking-wider">
-                  <CheckCircle2 className="h-4 w-4 shrink-0" />
-                  <span>The Karka Guarantee</span>
+              {/* Key Highlights Card - The Karka Guarantee */}
+              <div className="mt-6 rounded-2xl border border-burgundy/20 bg-burgundy-subtle p-5 space-y-3">
+                <div className="flex items-center gap-2 text-xs font-bold text-burgundy uppercase tracking-wider">
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-burgundy" />
+                  <span className="text-burgundy font-bold">THE KARKA GUARANTEE</span>
                 </div>
-                <div className="space-y-1.5 text-xs text-night-muted">
+                <div className="space-y-2 text-xs text-muted">
                   <div className="flex items-center justify-between">
-                    <span>Upfront Tuition</span>
-                    <span className="font-bold text-mint">₹0 (Zero Risk)</span>
+                    <span className="text-primary font-medium">Upfront Tuition</span>
+                    <span className="font-bold text-positive-text">₹0 (Zero Risk)</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span>Placement Fee</span>
-                    <span className="font-bold text-saffron">Fixed ₹40,000 Flat</span>
+                    <span className="text-primary font-medium">Placement Fee</span>
+                    <span className="font-bold text-accent-text">Fixed ₹40,000 Flat</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span>Third-Party Loans</span>
-                    <span className="font-bold text-night-text">None (No NBFCs)</span>
+                    <span className="text-primary font-medium">Third-Party Loans</span>
+                    <span className="font-bold text-primary">None (No NBFCs)</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span>Ongoing Deductions</span>
-                    <span className="font-bold text-night-text">0% of salary</span>
+                    <span className="text-primary font-medium">Ongoing Deductions</span>
+                    <span className="font-bold text-primary">0% of salary</span>
                   </div>
                 </div>
               </div>
@@ -302,7 +309,7 @@ export function PapTimeline({ className, onApplyClick }: PapTimelineProps) {
                   variant="primary"
                   size="lg"
                   onClick={onApplyClick}
-                  className="w-full font-bold shadow-glow flex items-center justify-center gap-2"
+                  className="w-full font-bold shadow-subtle flex items-center justify-center gap-2"
                 >
                   <Sparkles className="h-4 w-4" />
                   <span>Apply with ₹0 Upfront</span>
@@ -319,19 +326,19 @@ export function PapTimeline({ className, onApplyClick }: PapTimelineProps) {
         <div className="lg:col-span-7 relative">
           {/* Animated Vertical Progress Line Container */}
           <div
-            className="absolute left-6 sm:left-8 top-6 bottom-6 w-0.5 bg-white/10 -translate-x-1/2 select-none"
+            className="absolute left-6 sm:left-8 top-6 bottom-6 w-0.5 bg-ui/20 -translate-x-1/2 select-none"
             aria-hidden="true"
           >
             {/* Animated drawing progress bar */}
             {!prefersReduced ? (
               <motion.div
                 style={{ height: lineHeight }}
-                className="w-full bg-gradient-to-b from-saffron via-mint to-saffron rounded-full shadow-[0_0_12px_rgba(255,106,43,0.6)]"
+                className="w-full bg-gradient-to-b from-accent via-positive-text to-accent rounded-full shadow-sm"
               />
             ) : (
               <div
                 style={{ height: `${((activeStep + 1) / PAP_STEPS.length) * 100}%` }}
-                className="w-full bg-saffron rounded-full"
+                className="w-full bg-accent rounded-full"
               />
             )}
           </div>
@@ -355,45 +362,45 @@ export function PapTimeline({ className, onApplyClick }: PapTimelineProps) {
                     className={cn(
                       "absolute left-6 sm:left-8 top-6 -translate-x-1/2 -translate-y-1/2 h-10 w-10 sm:h-12 sm:w-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 z-10",
                       isCurrent
-                        ? "border-saffron bg-night-1 shadow-[0_0_20px_rgba(255,106,43,0.7)] scale-110"
+                        ? "border-accent bg-elev text-accent-text shadow-glow scale-110"
                         : isPassed
-                        ? "border-mint bg-forest/80 text-mint"
-                        : "border-white/20 bg-night-2 text-night-muted"
+                        ? "border-positive-text bg-elev text-positive-text"
+                        : "border-ui/20 bg-elev text-muted"
                     )}
                   >
                     <Icon
                       className={cn(
                         "h-5 w-5 transition-colors duration-200",
-                        isCurrent ? "text-saffron" : isPassed ? "text-mint" : "text-night-muted"
+                        isCurrent ? "text-accent-text" : isPassed ? "text-positive-text" : "text-muted"
                       )}
                     />
                   </div>
 
-                  {/* Step Glass Card */}
+                  {/* Step Card Container */}
                   <div
                     className={cn(
-                      "rounded-3xl border p-6 sm:p-8 backdrop-blur-md transition-all duration-300 shadow-glass",
+                      "transition-all duration-300",
                       isCurrent
-                        ? "border-saffron/50 bg-night-2/95 shadow-[0_12px_40px_-10px_rgba(255,106,43,0.22)] ring-1 ring-saffron/30 scale-[1.01]"
-                        : "border-white/10 bg-night-2/80 hover:border-white/25 hover:bg-night-2/90"
+                        ? "rounded-3xl border-2 border-accent/60 bg-elev p-6 sm:p-8 shadow-subtle ring-1 ring-accent/20"
+                        : "rounded-3xl border border-ui/15 bg-elev p-6 sm:p-8 shadow-subtle hover:border-ui/40 transition-colors"
                     )}
                   >
                     {/* Header: Number, Step Title, Badge */}
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                       <div className="flex items-center gap-3">
-                        <span className="font-mono text-2xl sm:text-3xl font-extrabold text-saffron">
+                        <span className="font-mono text-2xl sm:text-3xl font-extrabold text-accent-text">
                           {item.numberStr}
                         </span>
-                        <h4 className="font-display text-xl sm:text-2xl font-bold text-night-text tracking-tight">
+                        <h4 className="font-display text-xl sm:text-2xl font-bold text-primary tracking-tight">
                           {item.title}
                         </h4>
                       </div>
 
                       {item.metric && (
-                        <div className="rounded-full border border-mint/30 bg-mint/10 px-3 py-1 text-xs font-bold text-mint flex items-center gap-1.5">
+                        <div className="rounded-full border border-positive-text/30 bg-positive-text/10 px-3 py-1 text-xs font-bold text-positive-text flex items-center gap-1.5">
                           <span>{item.metric}</span>
-                          <span className="text-white/30">•</span>
-                          <span className="text-[10px] text-night-muted font-normal uppercase">
+                          <span className="opacity-40">•</span>
+                          <span className="text-[10px] text-muted font-normal uppercase">
                             {item.metricLabel}
                           </span>
                         </div>
@@ -401,23 +408,23 @@ export function PapTimeline({ className, onApplyClick }: PapTimelineProps) {
                     </div>
 
                     {/* Tagline */}
-                    <p className="text-sm font-medium text-saffron/90 mb-3">
+                    <p className="text-sm font-medium text-burgundy dark:text-burgundy mb-3">
                       {item.tagline}
                     </p>
 
                     {/* Description */}
-                    <p className="text-sm text-night-muted leading-relaxed mb-5">
+                    <p className="text-sm text-muted leading-relaxed mb-5">
                       {item.description}
                     </p>
 
                     {/* Highlights Pills */}
-                    <div className="flex flex-wrap gap-2 pt-2 border-t border-white/5">
+                    <div className="flex flex-wrap gap-2 pt-2 border-t border-ui/10">
                       {item.highlights.map((h, i) => (
                         <span
                           key={i}
-                          className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-night-3/60 px-3 py-1 text-xs font-medium text-night-text"
+                          className="inline-flex items-center gap-1.5 rounded-full border border-ui/15 bg-sunken px-3 py-1 text-xs font-medium text-primary"
                         >
-                          <span className="h-1.5 w-1.5 rounded-full bg-mint" />
+                          <span className="h-1.5 w-1.5 rounded-full bg-positive-text" />
                           <span>{h}</span>
                         </span>
                       ))}

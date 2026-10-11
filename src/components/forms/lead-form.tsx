@@ -87,13 +87,13 @@ export function LeadForm({
       <div
         role="alert"
         aria-live="polite"
-        className="rounded-2xl border border-mint/30 bg-forest/20 p-6 text-center shadow-glass"
+        className="rounded-2xl border border-mint/30 bg-mint/5 p-6 text-center shadow-sm"
       >
-        <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-mint/20 text-mint text-xl font-bold">
+        <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-mint/20 text-positive-text text-xl font-bold">
           ✓
         </div>
-        <h3 className="text-xl font-bold text-night-text">Application Received!</h3>
-        <p className="mt-2 text-sm text-night-muted">
+        <h3 className="text-xl font-bold text-primary">Application Received!</h3>
+        <p className="mt-2 text-sm text-muted">
           Our admissions mentor in Nagercoil will connect with you within 24 hours on WhatsApp or call.
         </p>
         <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -101,7 +101,7 @@ export function LeadForm({
             href={siteConfig.contact.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-11 w-full sm:w-auto items-center justify-center rounded-pill bg-[#25D366] px-5 text-sm font-bold text-white transition hover:bg-[#20ba59]"
+            className="inline-flex h-11 w-full sm:w-auto items-center justify-center rounded-pill bg-[#075E54] px-5 text-sm font-bold text-white transition hover:bg-[#128C7E] shadow-sm"
           >
             Chat with Mentor on WhatsApp
           </a>
@@ -119,7 +119,7 @@ export function LeadForm({
                 website: "",
               });
             }}
-            className="text-xs text-night-muted hover:text-night-text underline py-2"
+            className="text-xs text-muted hover:text-primary underline py-2"
           >
             Submit another enquiry
           </button>
@@ -148,15 +148,15 @@ export function LeadForm({
         <div
           role="alert"
           aria-live="assertive"
-          className="rounded-xl border border-saffron/40 bg-saffron/10 p-3 text-sm text-saffron font-medium"
+          className="rounded-xl border border-accent/40 bg-accent/10 p-3 text-sm text-accent-text font-medium"
         >
           {errorMessage}
         </div>
       )}
 
       <div>
-        <label htmlFor="lead-name" className="block text-xs font-semibold uppercase tracking-wider text-night-muted mb-1.5">
-          Full Name <span className="text-saffron">*</span>
+        <label htmlFor="lead-name" className="block text-xs font-semibold uppercase tracking-wider text-muted mb-1.5">
+          Full Name <span className="text-accent-text">*</span>
         </label>
         <input
           id="lead-name"
@@ -165,13 +165,13 @@ export function LeadForm({
           placeholder="e.g. Anand Kumar"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="w-full rounded-xl border border-white/10 bg-night-3 px-4 py-3 text-sm text-night-text placeholder:text-night-muted/50 focus:border-saffron focus:outline-none focus:ring-1 focus:ring-saffron transition"
+          className="w-full rounded-xl border border-ui/20 bg-elev px-4 py-3 text-sm text-primary placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition shadow-sm"
         />
       </div>
 
       <div>
-        <label htmlFor="lead-phone" className="block text-xs font-semibold uppercase tracking-wider text-night-muted mb-1.5">
-          WhatsApp / Phone Number <span className="text-saffron">*</span>
+        <label htmlFor="lead-phone" className="block text-xs font-semibold uppercase tracking-wider text-muted mb-1.5">
+          WhatsApp / Phone Number <span className="text-accent-text">*</span>
         </label>
         <input
           id="lead-phone"
@@ -180,13 +180,13 @@ export function LeadForm({
           placeholder="+91 98765 43210"
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          className="w-full rounded-xl border border-white/10 bg-night-3 px-4 py-3 text-sm text-night-text placeholder:text-night-muted/50 focus:border-saffron focus:outline-none focus:ring-1 focus:ring-saffron transition"
+          className="w-full rounded-xl border border-ui/20 bg-elev px-4 py-3 text-sm text-primary placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition shadow-sm"
         />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="lead-audience" className="block text-xs font-semibold uppercase tracking-wider text-night-muted mb-1.5">
+          <label htmlFor="lead-audience" className="block text-xs font-semibold uppercase tracking-wider text-muted mb-1.5">
             Who are you?
           </label>
           <select
@@ -198,7 +198,7 @@ export function LeadForm({
                 audience: e.target.value as "school" | "college" | "graduate" | "switcher" | "parent" | "other",
               })
             }
-            className="w-full rounded-xl border border-white/10 bg-night-3 px-3 py-3 text-sm text-night-text focus:border-saffron focus:outline-none focus:ring-1 focus:ring-saffron transition"
+            className="w-full rounded-xl border border-ui/20 bg-elev px-3 py-3 text-sm text-primary focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition shadow-sm"
           >
             <option value="graduate">Recent Graduate (Job Seeker)</option>
             <option value="college">College Student</option>
@@ -210,14 +210,14 @@ export function LeadForm({
         </div>
 
         <div>
-          <label htmlFor="lead-track" className="block text-xs font-semibold uppercase tracking-wider text-night-muted mb-1.5">
+          <label htmlFor="lead-track" className="block text-xs font-semibold uppercase tracking-wider text-muted mb-1.5">
             Program Track
           </label>
           <select
             id="lead-track"
             value={formData.trackInterest}
             onChange={(e) => setFormData({ ...formData, trackInterest: e.target.value })}
-            className="w-full rounded-xl border border-white/10 bg-night-3 px-3 py-3 text-sm text-night-text focus:border-saffron focus:outline-none focus:ring-1 focus:ring-saffron transition"
+            className="w-full rounded-xl border border-ui/20 bg-elev px-3 py-3 text-sm text-primary focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition shadow-sm"
           >
             {careerTracks.map((track) => (
               <option key={track.slug} value={track.slug}>
@@ -230,29 +230,29 @@ export function LeadForm({
 
       {!compact && (
         <div>
-          <span className="block text-xs font-semibold uppercase tracking-wider text-night-muted mb-1.5">
+          <span className="block text-xs font-semibold uppercase tracking-wider text-muted mb-1.5">
             Preferred Training Mode
           </span>
           <div className="flex gap-4">
-            <label className="flex items-center gap-2 text-sm text-night-text cursor-pointer">
+            <label className="flex items-center gap-2 text-sm text-primary cursor-pointer">
               <input
                 type="radio"
                 name="training-mode"
                 value="offline"
                 checked={formData.mode === "offline"}
                 onChange={() => setFormData({ ...formData, mode: "offline" })}
-                className="accent-saffron text-saffron focus:ring-saffron"
+                className="accent-saffron text-accent focus:ring-accent"
               />
               In-Person Lab (Nagercoil Campus)
             </label>
-            <label className="flex items-center gap-2 text-sm text-night-text cursor-pointer">
+            <label className="flex items-center gap-2 text-sm text-primary cursor-pointer">
               <input
                 type="radio"
                 name="training-mode"
                 value="online"
                 checked={formData.mode === "online"}
                 onChange={() => setFormData({ ...formData, mode: "online" })}
-                className="accent-saffron text-saffron focus:ring-saffron"
+                className="accent-saffron text-accent focus:ring-accent"
               />
               Live Online
             </label>
@@ -265,12 +265,13 @@ export function LeadForm({
           type="submit"
           variant="primary"
           size="lg"
-          className="w-full shadow-glow"
+          magnetic
+          className="w-full shadow-glow font-bold"
           disabled={status === "submitting"}
         >
           {status === "submitting" ? "Submitting Application..." : "Book Free Career Counselling"}
         </Button>
-        <p className="mt-2 text-center text-[11px] text-night-muted">
+        <p className="mt-2 text-center text-[11px] text-muted">
           ₹0 upfront for eligible PAP tracks • No spam • Confidential mentor call
         </p>
       </div>

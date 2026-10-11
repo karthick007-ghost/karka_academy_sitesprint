@@ -2,17 +2,17 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { courses } from "@/content/courses";
 import { careerTracks } from "@/content/tracks";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { LeadForm } from "@/components/forms/lead-form";
-import { CheckCircle2, ArrowRight, Sparkles, Building2, Clock } from "lucide-react";
+import { CheckCircle2, ArrowRight, Clock } from "lucide-react";
 
 interface AudienceConfig {
   slug: string;
   badge: string;
   title: string;
+  titlePrefix: string;
+  titleHighlight: string;
   subtitle: string;
   keyBenefits: string[];
   recommendedTrackSlugs: string[];
@@ -24,6 +24,8 @@ const audiencesMap: Record<string, AudienceConfig> = {
     slug: "college",
     badge: "For College Students",
     title: "Build Real Software Products While Still in College",
+    titlePrefix: "Build Real Software Products",
+    titleHighlight: "While Still in College",
     subtitle:
       "Tired of outdated university syllabuses and theoretical projects? Join Karka Academy to ship commercial client code at Agile Tribers and graduate with an unbeatable portfolio.",
     keyBenefits: [
@@ -39,6 +41,8 @@ const audiencesMap: Record<string, AudienceConfig> = {
     slug: "college-students",
     badge: "For College Students",
     title: "Build Real Software Products While Still in College",
+    titlePrefix: "Build Real Software Products",
+    titleHighlight: "While Still in College",
     subtitle:
       "Tired of outdated university syllabuses and theoretical projects? Join Karka Academy to ship commercial client code at Agile Tribers and graduate with an unbeatable portfolio.",
     keyBenefits: [
@@ -54,6 +58,8 @@ const audiencesMap: Record<string, AudienceConfig> = {
     slug: "graduates",
     badge: "For Recent Graduates",
     title: "₹0 Upfront Tuition. Pay Only When You Land Your Tech Job.",
+    titlePrefix: "₹0 Upfront Tuition.",
+    titleHighlight: "Pay Only When You Land Your Tech Job.",
     subtitle:
       "Graduated and struggling with mass applications and rejection emails? Our intensive 30 hrs/week Pay After Placement model trains you, mentors your interview skills, and connects you directly with hiring partners.",
     keyBenefits: [
@@ -69,6 +75,8 @@ const audiencesMap: Record<string, AudienceConfig> = {
     slug: "switchers",
     badge: "For Career Switchers",
     title: "Transition into High-Paying Software & AI Engineering",
+    titlePrefix: "Transition into",
+    titleHighlight: "High-Paying Software & AI Engineering",
     subtitle:
       "Working in non-tech, operations, or BPO and want to switch into core technology? We teach fundamentals from scratch, pairing you with senior engineering mentors who have led tech teams at Wipro and Flow Global.",
     keyBenefits: [
@@ -84,6 +92,8 @@ const audiencesMap: Record<string, AudienceConfig> = {
     slug: "professionals",
     badge: "For Working Professionals",
     title: "Upskill to Modern Generative AI & Cloud Architecture",
+    titlePrefix: "Upskill to Modern",
+    titleHighlight: "Generative AI & Cloud Architecture",
     subtitle:
       "Stay ahead of the curve. Master autonomous AI agents, enterprise RAG pipelines, and cloud microservices to command senior engineering compensation.",
     keyBenefits: [
@@ -99,6 +109,8 @@ const audiencesMap: Record<string, AudienceConfig> = {
     slug: "school",
     badge: "For School Students",
     title: "Ignite Logical Thinking & Coding from Grades 6 to 12",
+    titlePrefix: "Ignite Logical Thinking & Coding",
+    titleHighlight: "from Grades 6 to 12",
     subtitle:
       "Give your child the unfair advantage of digital literacy, Python game development, and foundational artificial intelligence in a safe, fun, hands-on environment.",
     keyBenefits: [
@@ -114,6 +126,8 @@ const audiencesMap: Record<string, AudienceConfig> = {
     slug: "school-students",
     badge: "For School Students",
     title: "Ignite Logical Thinking & Coding from Grades 6 to 12",
+    titlePrefix: "Ignite Logical Thinking & Coding",
+    titleHighlight: "from Grades 6 to 12",
     subtitle:
       "Give your child the unfair advantage of digital literacy, Python game development, and foundational artificial intelligence in a safe, fun, hands-on environment.",
     keyBenefits: [
@@ -166,16 +180,17 @@ export default async function AudiencePage({
   );
 
   return (
-    <div className="py-12 md:py-20 bg-night-1">
+    <div className="py-12 md:py-20 bg-base text-primary transition-colors duration-200">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
         {/* Hero Section */}
-        <div className="rounded-3xl border border-white/10 bg-night-2 p-8 sm:p-12 shadow-glass">
+        <div className="rounded-3xl border border-ui/15 bg-elev p-8 sm:p-12 shadow-subtle">
           <div className="max-w-3xl space-y-4">
             <Badge variant="saffron">{config.badge}</Badge>
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-night-text leading-tight">
-              {config.title}
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary leading-tight">
+              {config.titlePrefix}{" "}
+              <span className="text-accent-text">{config.titleHighlight}</span>
             </h1>
-            <p className="text-base sm:text-lg text-night-muted leading-relaxed">
+            <p className="text-base sm:text-lg text-muted leading-relaxed">
               {config.subtitle}
             </p>
           </div>
@@ -183,16 +198,16 @@ export default async function AudiencePage({
 
         {/* Benefits Grid */}
         <section className="space-y-6">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-night-text">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-primary">
             Why Karka Academy is Built for You
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {config.keyBenefits.map((benefit, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-3 rounded-2xl border border-white/5 bg-night-2 p-5 text-sm sm:text-base text-night-text shadow-glass"
+                className="flex items-start gap-3 rounded-2xl border border-ui/15 bg-elev p-5 text-sm sm:text-base text-primary shadow-subtle"
               >
-                <CheckCircle2 className="h-5 w-5 text-mint shrink-0 mt-0.5" />
+                <CheckCircle2 className="h-5 w-5 text-positive-text shrink-0 mt-0.5" />
                 <span>{benefit}</span>
               </div>
             ))}
@@ -201,18 +216,18 @@ export default async function AudiencePage({
 
         {/* Recommended Tracks */}
         <section className="space-y-6">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-night-text">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-primary">
             Recommended Programs for Your Profile
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {matchingTracks.map((track) => (
               <div
                 key={track.slug}
-                className="rounded-3xl border border-white/10 bg-night-2 p-6 flex flex-col justify-between shadow-glass"
+                className="rounded-3xl border border-ui/15 bg-elev p-6 flex flex-col justify-between shadow-subtle hover:border-burgundy/40 transition-colors"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold text-saffron uppercase tracking-wider">
+                    <span className="font-mono text-xs font-bold text-accent-text uppercase tracking-wider">
                       {track.title}
                     </span>
                     {track.isPayAfterPlacement && (
@@ -221,19 +236,19 @@ export default async function AudiencePage({
                       </Badge>
                     )}
                   </div>
-                  <p className="text-xs sm:text-sm text-night-muted leading-relaxed">
+                  <p className="text-xs sm:text-sm text-muted leading-relaxed">
                     {track.description}
                   </p>
-                  <div className="flex items-center gap-1.5 text-xs text-night-muted">
-                    <Clock className="h-3.5 w-3.5 text-mint" />
+                  <div className="flex items-center gap-1.5 text-xs text-muted">
+                    <Clock className="h-3.5 w-3.5 text-positive-text" />
                     <span>{track.duration}</span>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-white/10">
+                <div className="mt-6 pt-4 border-t border-ui/15">
                   <Link
                     href={`/courses?track=${track.slug}`}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-mint hover:underline"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-accent-text hover:underline"
                   >
                     <span>View track curriculum</span>
                     <ArrowRight className="h-3.5 w-3.5" />
@@ -245,19 +260,19 @@ export default async function AudiencePage({
         </section>
 
         {/* Lead Capture Form for this Audience */}
-        <section className="rounded-3xl border border-white/15 bg-night-2 p-8 sm:p-12 shadow-glass">
+        <section className="rounded-3xl border border-ui/15 bg-elev p-8 sm:p-12 shadow-subtle">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-6 space-y-4">
               <Badge variant="mint">Direct Mentor Consultation</Badge>
-              <h3 className="font-display text-2xl sm:text-3xl font-bold text-night-text">
+              <h3 className="font-display text-2xl sm:text-3xl font-bold text-primary">
                 Speak with Admissions in Nagercoil
               </h3>
-              <p className="text-sm text-night-muted leading-relaxed">
+              <p className="text-sm text-muted leading-relaxed">
                 Have questions about schedules, fees, or course fit? Book a quick 15-minute phone or campus visit with an experienced technical mentor.
               </p>
             </div>
             <div className="lg:col-span-6">
-              <div className="rounded-2xl border border-white/10 bg-night-1 p-6 shadow-glass">
+              <div className="rounded-2xl border border-ui/15 bg-sunken p-6 shadow-sm">
                 <LeadForm
                   defaultAudience={config.formAudience}
                   source={`landing-${config.slug}`}

@@ -49,37 +49,37 @@ export function HeroPoster() {
       {/* Distinct Orbiting Planets with High-Contrast Badges */}
 
       {/* Orbit 1: Full-Stack Dev (Electric Saffron) */}
-      <div className="absolute top-16 left-14 z-20 flex items-center gap-2 rounded-full border border-white/30 bg-night-1/90 px-3 py-1 text-xs font-bold text-white shadow-xl backdrop-blur-md">
+      <div className="absolute top-16 left-14 z-20 flex items-center gap-2 rounded-full border border-white/30 bg-[#0B0F14] px-3 py-1 text-xs font-bold text-white shadow-xl backdrop-blur-md">
         <span className="h-2.5 w-2.5 rounded-full bg-[#FF6A2B] shadow-[0_0_8px_#FF6A2B]" />
         <span>Full-Stack Dev</span>
       </div>
 
       {/* Orbit 1: UI/UX Design (Coral / Sunset Pink) */}
-      <div className="absolute bottom-16 right-14 z-20 flex items-center gap-2 rounded-full border border-white/30 bg-night-1/90 px-3 py-1 text-xs font-bold text-white shadow-xl backdrop-blur-md">
+      <div className="absolute bottom-16 right-14 z-20 flex items-center gap-2 rounded-full border border-white/30 bg-[#0B0F14] px-3 py-1 text-xs font-bold text-white shadow-xl backdrop-blur-md">
         <span className="h-2.5 w-2.5 rounded-full bg-[#FF5E7E] shadow-[0_0_8px_#FF5E7E]" />
         <span>UI/UX Design</span>
       </div>
 
       {/* Orbit 2: Generative AI (Cyber Cyan / Mint) */}
-      <div className="absolute top-20 right-10 z-20 flex items-center gap-2 rounded-full border border-white/30 bg-night-1/90 px-3 py-1 text-xs font-bold text-white shadow-xl backdrop-blur-md">
+      <div className="absolute top-20 right-10 z-20 flex items-center gap-2 rounded-full border border-white/30 bg-[#0B0F14] px-3 py-1 text-xs font-bold text-white shadow-xl backdrop-blur-md">
         <span className="h-2.5 w-2.5 rounded-full bg-[#38BDF8] shadow-[0_0_8px_#38BDF8]" />
         <span>Generative AI</span>
       </div>
 
       {/* Orbit 2: Cloud & DevOps (Ice Blue) */}
-      <div className="absolute bottom-20 left-10 z-20 flex items-center gap-2 rounded-full border border-white/30 bg-night-1/90 px-3 py-1 text-xs font-bold text-white shadow-xl backdrop-blur-md">
+      <div className="absolute bottom-20 left-10 z-20 flex items-center gap-2 rounded-full border border-white/30 bg-[#0B0F14] px-3 py-1 text-xs font-bold text-white shadow-xl backdrop-blur-md">
         <span className="h-2.5 w-2.5 rounded-full bg-[#60A5FA] shadow-[0_0_8px_#60A5FA]" />
         <span>Cloud & DevOps</span>
       </div>
 
       {/* Orbit 3: Data Science & ML (Cyber Gold) */}
-      <div className="absolute top-6 right-24 z-20 flex items-center gap-2 rounded-full border border-white/30 bg-night-1/90 px-3 py-1 text-xs font-bold text-white shadow-xl backdrop-blur-md">
+      <div className="absolute top-6 right-24 z-20 flex items-center gap-2 rounded-full border border-white/30 bg-[#0B0F14] px-3 py-1 text-xs font-bold text-white shadow-xl backdrop-blur-md">
         <span className="h-2.5 w-2.5 rounded-full bg-[#FFD166] shadow-[0_0_8px_#FFD166]" />
         <span>Data Science & ML</span>
       </div>
 
       {/* Orbit 3: Client Internships (Forest Jade) */}
-      <div className="absolute bottom-6 left-24 z-20 flex items-center gap-2 rounded-full border border-white/30 bg-night-1/90 px-3 py-1 text-xs font-bold text-white shadow-xl backdrop-blur-md">
+      <div className="absolute bottom-6 left-24 z-20 flex items-center gap-2 rounded-full border border-white/30 bg-[#0B0F14] px-3 py-1 text-xs font-bold text-white shadow-xl backdrop-blur-md">
         <span className="h-2.5 w-2.5 rounded-full bg-[#2EC4B6] shadow-[0_0_8px_#2EC4B6]" />
         <span>Client Internships</span>
       </div>

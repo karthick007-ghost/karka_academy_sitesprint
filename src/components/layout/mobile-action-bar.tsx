@@ -19,14 +19,14 @@ export function MobileActionBar() {
   return (
     <aside
       aria-label="Quick Actions"
-      className="md:hidden fixed bottom-0 left-0 right-0 z-30 border-t border-white/10 bg-night-1/90 backdrop-blur-xl px-4 py-2.5 shadow-2xl"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-30 border-t border-border bg-bg/90 backdrop-blur-xl px-4 py-2.5 shadow-2xl"
     >
       <div className="flex items-center gap-3 max-w-md mx-auto">
         <a
           href={siteConfig.contact.whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 flex h-11 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 text-xs font-bold text-white transition active:scale-95 shadow-md"
+          className="flex-1 flex h-11 items-center justify-center gap-2 rounded-xl bg-[#075E54] px-3 text-xs font-bold text-white transition active:scale-95 shadow-md"
         >
           <MessageCircle className="h-4 w-4" />
           <span>WhatsApp</span>

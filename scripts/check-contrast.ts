@@ -10,9 +10,9 @@ interface ColorPair {
 }
 
 const LIGHT_THEME: Record<string, string> = {
-  bg: "#F7F3EC",
-  "bg-elev": "#FFFFFF",
-  "bg-sunken": "#EFE8DB",
+  bg: "#F7F3EB",
+  "bg-elev": "#FBF8F1",
+  "bg-sunken": "#ECE5D8",
   text: "#14171F",
   "text-muted": "#4A4F5C",
   accent: "#FF6A2B",
@@ -20,15 +20,16 @@ const LIGHT_THEME: Record<string, string> = {
   "accent-text": "#A63A0B",
   "brand-violet": "#6C2BD9",
   "brand-cyan": "#0284C7",
-  "positive-text": "#0B6B45",
+  "positive-text": "#15803D",
+  burgundy: "#722030",
   "border-ui": "#7C7768",
-  focus: "#0F3D2E",
+  focus: "#722030",
 };
 
 const DARK_THEME: Record<string, string> = {
   bg: "#0B0F14",
-  "bg-elev": "#121821",
-  "bg-sunken": "#0B0F14",
+  "bg-elev": "#161D26",
+  "bg-sunken": "#0E131A",
   text: "#F3EEE4",
   "text-muted": "#A9B0BD",
   accent: "#FF6A2B",
@@ -36,9 +37,10 @@ const DARK_THEME: Record<string, string> = {
   "accent-text": "#FF6A2B",
   "brand-violet": "#8B5CF6",
   "brand-cyan": "#38BDF8",
-  "positive-text": "#7BE0AD",
+  "positive-text": "#4ADE80",
+  burgundy: "#E27D90",
   "border-ui": "#6B7587",
-  focus: "#7BE0AD",
+  focus: "#4ADE80",
 };
 
 function hexToRgb(hex: string): [number, number, number] {
@@ -74,12 +76,14 @@ const LIGHT_PAIRS: ColorPair[] = [
   { name: "accent-text on bg-elev (accent text on card)", fg: "accent-text", bg: "bg-elev", minRatio: 4.5 },
   { name: "on-accent on accent (button text on accent fill)", fg: "on-accent", bg: "accent", minRatio: 4.5 },
   { name: "positive-text on bg (success text on paper)", fg: "positive-text", bg: "bg", minRatio: 4.5 },
+  { name: "burgundy on bg (old-money accent on ivory)", fg: "burgundy", bg: "bg", minRatio: 4.5 },
+  { name: "burgundy on bg-elev (old-money accent on card)", fg: "burgundy", bg: "bg-elev", minRatio: 4.5 },
   { name: "border-ui on bg (UI inputs/controls)", fg: "border-ui", bg: "bg", minRatio: 3.0 },
   { name: "border-ui on bg-sunken (controls on sunken)", fg: "border-ui", bg: "bg-sunken", minRatio: 3.0 },
   { name: "focus on bg (focus indicator ring)", fg: "focus", bg: "bg", minRatio: 3.0 },
 ];
 
-// 12 checks for Dark Theme
+// 12+ checks for Dark Theme
 const DARK_PAIRS: ColorPair[] = [
   { name: "text on bg (body text on dark)", fg: "text", bg: "bg", minRatio: 7.0 },
   { name: "text on bg-elev (card body text)", fg: "text", bg: "bg-elev", minRatio: 7.0 },
@@ -90,6 +94,7 @@ const DARK_PAIRS: ColorPair[] = [
   { name: "on-accent on accent (button text on accent fill)", fg: "on-accent", bg: "accent", minRatio: 4.5 },
   { name: "positive-text on bg (success text on dark)", fg: "positive-text", bg: "bg", minRatio: 4.5 },
   { name: "positive-text on bg-elev (success text on card)", fg: "positive-text", bg: "bg-elev", minRatio: 4.5 },
+  { name: "burgundy on bg (rose burgundy on dark)", fg: "burgundy", bg: "bg", minRatio: 4.5 },
   { name: "border-ui on bg (UI inputs/controls)", fg: "border-ui", bg: "bg", minRatio: 3.0 },
   { name: "border-ui on bg-elev (controls on card)", fg: "border-ui", bg: "bg-elev", minRatio: 3.0 },
   { name: "focus on bg (focus indicator ring)", fg: "focus", bg: "bg", minRatio: 3.0 },

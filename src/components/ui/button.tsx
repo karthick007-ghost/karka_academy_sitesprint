@@ -39,13 +39,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       primary:
         "bg-saffron text-ink font-bold shadow-subtle hover:bg-saffron/90",
       secondary:
-        "bg-forest text-paper font-semibold hover:bg-forest/90",
+        "bg-elev border border-ui/25 text-primary font-semibold hover:bg-sunken hover:border-ui/50 transition-colors",
       outline:
-        "border border-forest/30 text-forest bg-transparent hover:bg-forest/5",
+        "border border-ui/35 text-primary bg-transparent hover:bg-elev hover:border-ui/60 transition-colors",
       saffronOutline:
         "border border-saffron/40 text-saffron-ink bg-transparent hover:bg-saffron/10",
       ghost:
-        "text-ink hover:bg-ink/5 active:bg-ink/10",
+        "text-primary hover:bg-sunken active:bg-sunken/80",
       night:
         "bg-mint text-night font-bold shadow-subtle hover:bg-mint/90 focus-visible:ring-mint focus-visible:ring-offset-night",
     };

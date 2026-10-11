@@ -29,7 +29,7 @@ export function Marquee({ items, className, speedSec = 28 }: MarqueeProps) {
         {duplicated.map((item, idx) => (
           <span
             key={`${item}-${idx}`}
-            className="text-base sm:text-lg font-bold tracking-wide text-ink-2/80 uppercase whitespace-nowrap hover:text-forest transition-colors"
+            className="text-base sm:text-lg font-bold tracking-wide text-muted uppercase whitespace-nowrap hover:text-accent-text transition-colors"
           >
             {item}
           </span>
@@ -43,7 +43,7 @@ export function Marquee({ items, className, speedSec = 28 }: MarqueeProps) {
         {duplicated.map((item, idx) => (
           <span
             key={`dup-${item}-${idx}`}
-            className="text-base sm:text-lg font-bold tracking-wide text-ink-2/80 uppercase whitespace-nowrap hover:text-forest transition-colors"
+            className="text-base sm:text-lg font-bold tracking-wide text-muted uppercase whitespace-nowrap hover:text-accent-text transition-colors"
           >
             {item}
           </span>

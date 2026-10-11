@@ -193,19 +193,18 @@ export function KolamHeader({
         <div className="h-1.5 w-1.5 rounded-full bg-saffron/80" />
       </div>
 
-      {/* Central Kolam Motif & Outlined Tamil Typography */}
-      <div className="flex items-center gap-2 px-2 py-0.5 rounded-full border border-saffron/20 bg-saffron/5 backdrop-blur-sm">
-        <KolamMandala size={22} color="var(--saffron, #FF6A2B)" animated={false} />
+      <div className="flex items-center gap-2 px-2.5 py-1 rounded-full border border-border-ui/30 bg-bg-elev/80 backdrop-blur-sm shadow-sm">
+        <KolamMandala size={22} color="var(--accent-text)" animated={false} />
         <span
           lang="ta"
-          className="font-tamil text-base font-bold tracking-wider text-saffron drop-shadow-[0_0_8px_rgba(255,106,43,0.4)]"
+          className="font-tamil text-base font-bold tracking-wider text-accent-text"
         >
           {tamilWord}
         </span>
         {label && (
           <>
-            <span className="text-white/20 text-xs">•</span>
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-night-muted">
+            <span className="text-muted/40 text-xs">•</span>
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-muted">
               {label}
             </span>
           </>
@@ -257,4 +256,68 @@ export function KolamHeroBackdrop({
   );
 }
 
+/**
+ * Section Divider with Traditional Kolam Ornament
+ */
+export interface KolamDividerProps {
+  variant?: "lotus" | "mandala" | "dots" | "line";
+  className?: string;
+  color?: string;
+}
+
+export function KolamDivider({
+  variant = "lotus",
+  className = "",
+  color = "var(--saffron, #FF6A2B)",
+}: KolamDividerProps) {
+  return (
+    <div
+      role="presentation"
+      aria-hidden="true"
+      className={`relative flex items-center justify-center py-6 select-none ${className}`}
+    >
+      <div className="flex items-center w-full max-w-4xl mx-auto px-4">
+        {/* Left hairline gradient rule */}
+        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-border-ui/40 to-saffron/60" />
+
+        {/* Center decorative ornament motif */}
+        <div className="flex items-center gap-2 px-4 shrink-0 text-saffron">
+          <div className="h-1.5 w-1.5 rounded-full bg-saffron" />
+          {variant === "lotus" ? (
+            <svg width="32" height="24" viewBox="0 0 32 24" fill="none" className="text-saffron">
+              <path
+                d="M16 2C16 2 10 9 10 15C10 18.5 12.5 21 16 21C19.5 21 22 18.5 22 15C22 9 16 2 16 2Z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                fill="currentColor"
+                fillOpacity="0.15"
+              />
+              <path
+                d="M10 15C7 10 2 12 2 16C2 19 5.5 21 9 21"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+              <path
+                d="M22 15C25 10 30 12 30 16C30 19 26.5 21 23 21"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+              <circle cx="16" cy="15" r="2" fill="currentColor" />
+            </svg>
+          ) : (
+            <KolamMandala size={28} color={color} animated={false} />
+          )}
+          <div className="h-1.5 w-1.5 rounded-full bg-saffron" />
+        </div>
+
+        {/* Right hairline gradient rule */}
+        <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-border-ui/40 to-saffron/60" />
+      </div>
+    </div>
+  );
+}
+
 export default KolamMandala;
+

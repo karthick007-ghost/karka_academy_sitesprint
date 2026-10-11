@@ -38,8 +38,8 @@ export function BentoCard({
       className={cn(
         "group relative flex flex-col justify-between rounded-lg p-6 sm:p-8 transition-all duration-300",
         highlight
-          ? "bg-forest text-paper shadow-xl lg:col-span-2"
-          : "bg-paper border border-ink/10 shadow-subtle hover:border-forest/30 hover:shadow-md",
+          ? "bg-elev border border-burgundy/30 text-primary shadow-subtle lg:col-span-2"
+          : "bg-elev border border-ui/15 text-primary shadow-subtle hover:border-burgundy/30 hover:shadow-md",
         className
       )}
     >
@@ -48,26 +48,18 @@ export function BentoCard({
           <span
             className={cn(
               "font-display text-3xl sm:text-4xl font-bold opacity-30 select-none block mb-4",
-              highlight ? "text-mint" : "text-ink"
+              highlight ? "text-accent-text" : "text-primary"
             )}
           >
             {typeof number === "number" ? String(number).padStart(2, "0") : number}
           </span>
         )}
         <h3
-          className={cn(
-            "font-display text-xl sm:text-2xl font-bold tracking-tight mb-3",
-            highlight ? "text-paper" : "text-ink"
-          )}
+          className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-3 text-primary"
         >
           {title}
         </h3>
-        <p
-          className={cn(
-            "text-base leading-relaxed",
-            highlight ? "text-paper/80" : "text-ink-2"
-          )}
-        >
+        <p className="text-base leading-relaxed text-muted">
           {description}
         </p>
       </div>

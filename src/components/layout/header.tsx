@@ -56,7 +56,7 @@ export function Header() {
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           scrolled
-            ? "border-b border-white/10 bg-night-1/85 backdrop-blur-md shadow-glass"
+            ? "border-b border-border bg-bg/85 backdrop-blur-md shadow-glass"
             : "border-b border-transparent bg-transparent"
         }`}
       >
@@ -64,17 +64,17 @@ export function Header() {
           {/* Brand Logo */}
           <Link
             href="/"
-            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-saffron rounded-xl p-1"
+            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-accent rounded-xl p-1"
             aria-label="Karka Academy Home"
           >
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-forest to-forest-dark border border-white/15 shadow-md group-hover:scale-105 transition-transform">
-              <span className="font-tamil text-xl font-bold text-saffron select-none">க</span>
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-elev border border-ui/20 shadow-sm group-hover:scale-105 transition-transform">
+              <span className="font-tamil text-xl font-bold text-accent select-none">க</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-base sm:text-lg font-bold tracking-tight text-night-text group-hover:text-saffron transition-colors">
-                KARKA <span className="text-mint font-mono text-xs sm:text-sm">AI</span>
+              <span className="text-base sm:text-lg font-bold tracking-tight text-text group-hover:text-accent transition-colors">
+                KARKA <span className="text-positive-text font-mono text-xs sm:text-sm font-bold">AI</span>
               </span>
-              <span className="text-[10px] sm:text-[11px] font-medium tracking-wider uppercase text-night-muted">
+              <span className="text-[10px] sm:text-[11px] font-medium tracking-wider uppercase text-text-muted">
                 Tech Academy • Nagercoil
               </span>
             </div>
@@ -90,13 +90,13 @@ export function Header() {
                   href={item.href}
                   className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                     isActive
-                      ? "text-saffron bg-white/5"
-                      : "text-night-text/80 hover:text-night-text hover:bg-white/5"
+                      ? "text-accent-text bg-accent/10 font-bold"
+                      : "text-text-muted hover:text-text hover:bg-bg-elev"
                   }`}
                 >
                   {item.label}
                   {item.badge && (
-                    <span className="ml-1.5 inline-block rounded-pill bg-mint/20 px-1.5 py-0.5 text-[10px] font-bold text-mint">
+                    <span className="ml-1.5 inline-block rounded-pill bg-positive-text/15 px-2 py-0.5 text-[10px] font-bold text-positive-text border border-positive-text/30">
                       {item.badge}
                     </span>
                   )}
@@ -108,19 +108,19 @@ export function Header() {
             <div className="relative group">
               <button
                 type="button"
-                className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-night-text/80 hover:text-night-text rounded-lg transition-colors focus:outline-none"
+                className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-text-muted hover:text-text rounded-lg transition-colors focus:outline-none"
                 aria-haspopup="true"
               >
                 <span>For You</span>
                 <ChevronDown className="h-4 w-4 opacity-70 group-hover:rotate-180 transition-transform" />
               </button>
               <div className="absolute right-0 top-full pt-2 w-52 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200">
-                <div className="rounded-2xl border border-white/10 bg-night-2 p-2 shadow-2xl backdrop-blur-lg">
+                <div className="rounded-2xl bg-elev border border-ui/15 text-primary p-2 shadow-2xl backdrop-blur-lg">
                   {audienceLinks.map((aud) => (
                     <Link
                       key={aud.href}
                       href={aud.href}
-                      className="block px-3 py-2 text-xs font-semibold text-night-text rounded-xl hover:bg-white/5 hover:text-saffron transition-colors"
+                      className="block px-3 py-2 text-xs font-semibold text-primary rounded-xl hover:bg-sunken hover:text-burgundy transition-colors"
                     >
                       {aud.label}
                     </Link>
@@ -164,7 +164,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-night-2 text-night-text focus:outline-none focus:ring-2 focus:ring-saffron"
+              className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-bg-elev text-text focus:outline-none focus:ring-2 focus:ring-accent"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
             >
@@ -177,28 +177,30 @@ export function Header() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 z-50 md:hidden bg-night-1/95 backdrop-blur-xl animate-fade-in flex flex-col p-6 overflow-y-auto"
+          className="fixed inset-0 z-50 md:hidden bg-bg/95 backdrop-blur-xl animate-fade-in flex flex-col p-6 overflow-y-auto"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
         >
-          <div className="flex items-center justify-between pb-6 border-b border-white/10">
+          <div className="flex items-center justify-between pb-6 border-b border-border">
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center gap-3"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-forest border border-white/15">
-                <span className="font-tamil text-lg font-bold text-saffron">க</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-elev border border-ui/20 shadow-sm">
+                <span className="font-tamil text-lg font-bold text-accent">க</span>
               </div>
-              <span className="font-bold text-night-text">KARKA AI ACADEMY</span>
+              <span className="font-bold text-text">
+                KARKA <span className="text-positive-text font-mono text-xs sm:text-sm font-bold">AI</span> ACADEMY
+              </span>
             </Link>
             <div className="flex items-center gap-2">
               <ThemeToggle />
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-night-text"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border text-text"
                 aria-label="Close menu"
               >
                 <X className="h-5 w-5" />
@@ -212,19 +214,19 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="flex items-center justify-between py-2 text-base font-semibold text-night-text hover:text-saffron transition-colors"
+                className="flex items-center justify-between py-2 text-base font-semibold text-text hover:text-accent transition-colors"
               >
                 <span>{item.label}</span>
                 {item.badge && (
-                  <span className="rounded-pill bg-mint/20 px-2 py-0.5 text-xs font-bold text-mint">
+                  <span className="rounded-pill bg-positive-text/15 px-2.5 py-0.5 text-xs font-bold text-positive-text border border-positive-text/30">
                     {item.badge}
                   </span>
                 )}
               </Link>
             ))}
 
-            <div className="pt-4 border-t border-white/10">
-              <span className="text-xs font-semibold uppercase tracking-wider text-night-muted block mb-3">
+            <div className="pt-4 border-t border-border">
+              <span className="text-xs font-semibold uppercase tracking-wider text-text-muted block mb-3">
                 Tailored Guides
               </span>
               <div className="flex flex-col space-y-2">
@@ -232,7 +234,7 @@ export function Header() {
                   <Link
                     key={aud.href}
                     href={aud.href}
-                    className="text-sm text-night-muted hover:text-mint transition-colors py-1"
+                    className="text-sm text-text-muted hover:text-burgundy transition-colors py-1"
                   >
                     {aud.label}
                   </Link>
@@ -242,26 +244,42 @@ export function Header() {
           </div>
 
           {/* Actions in Drawer */}
-          <div className="mt-auto pt-6 border-t border-white/10 space-y-3">
+          <div className="mt-auto pt-6 border-t border-border space-y-3">
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger asChild>
                 <Button
                   variant="primary"
                   size="lg"
-                  className="w-full shadow-glow"
-                  onClick={() => setMobileMenuOpen(false)}
+                  magnetic
+                  className="w-full font-bold shadow-glow"
                 >
-                  <Sparkles className="h-4 w-4 mr-2" />
-                  <span>Apply Now / Book Call</span>
+                  <PhoneCall className="h-5 w-5 mr-2" />
+                  <span>Book Free Career Call</span>
                 </Button>
               </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Talk to an Industry Mentor</DialogTitle>
+                  <DialogDescription>
+                    Schedule a free 1-on-1 career counselling session at our Nagercoil lab or via video call.
+                  </DialogDescription>
+                </DialogHeader>
+                <LeadForm
+                  source="mobile-nav-cta"
+                  onSuccess={() => {
+                    setMobileMenuOpen(false);
+                    setTimeout(() => setDialogOpen(false), 2500);
+                  }}
+                  compact
+                />
+              </DialogContent>
             </Dialog>
 
             <a
               href={siteConfig.contact.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-12 w-full items-center justify-center rounded-pill bg-[#25D366] px-5 text-sm font-bold text-white transition hover:bg-[#20ba59]"
+              className="flex h-12 w-full items-center justify-center rounded-pill bg-[#075E54] px-5 text-sm font-bold text-white transition hover:bg-[#128C7E] shadow-sm"
             >
               Chat on WhatsApp ({siteConfig.contact.displayPhone})
             </a>

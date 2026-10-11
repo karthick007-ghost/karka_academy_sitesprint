@@ -11,23 +11,28 @@ const config: Config = {
     extend: {
       colors: {
         // Semantic Tokens (Direct CSS variable bindings)
+        bg: "var(--bg)",
         "bg-base": "var(--bg)",
         "bg-elev": "var(--bg-elev)",
         "bg-sunken": "var(--bg-sunken)",
+        text: "var(--text)",
         "text-primary": "var(--text)",
         "text-muted": "var(--text-muted)",
         accent: "var(--accent)",
         "on-accent": "var(--on-accent)",
         "accent-text": "var(--accent-text)",
         "positive-text": "var(--positive-text)",
+        burgundy: "var(--burgundy)",
+        "burgundy-subtle": "var(--burgundy-subtle)",
         "brand-violet": "var(--brand-violet)",
         "brand-cyan": "var(--brand-cyan)",
+        border: "var(--border-soft)",
+        "border-border-soft": "var(--border-soft)",
         "border-ui": "var(--border-ui)",
         "border-soft": "var(--border-soft)",
         "focus-ring": "var(--focus)",
 
         // Ergonomic short aliases
-        base: "var(--bg)",
         elev: "var(--bg-elev)",
         sunken: "var(--bg-sunken)",
         primary: "var(--text)",

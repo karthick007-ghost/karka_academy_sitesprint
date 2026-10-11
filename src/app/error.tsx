@@ -22,13 +22,13 @@ export default function ErrorPage({
       <div className="mt-6 flex gap-4">
         <button
           onClick={() => reset()}
-          className="rounded-md bg-forest px-6 py-2.5 text-sm font-semibold text-paper hover:bg-forest/90"
+          className="rounded-md bg-accent px-6 py-2.5 text-sm font-semibold text-on-accent hover:bg-accent/90 shadow-sm"
         >
           Try again
         </button>
         <Link
           href="/"
-          className="rounded-md border border-forest/20 px-6 py-2.5 text-sm font-semibold text-forest hover:bg-forest/5"
+          className="rounded-md border border-ui/30 px-6 py-2.5 text-sm font-semibold text-primary hover:bg-elev transition-colors"
         >
           Home
         </Link>

@@ -6,6 +6,8 @@ import { Footer } from "@/components/layout/footer";
 import { MobileActionBar } from "@/components/layout/mobile-action-bar";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import "@/styles/globals.css";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { CursorFollower } from "@/components/cursor/cursor-follower";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -84,12 +86,14 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      data-theme={initialTheme}
+      data-theme={initialTheme || "light"}
       className={`${fraunces.variable} ${instrumentSans.variable} ${notoTamil.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-screen bg-base text-primary antialiased selection:bg-accent/20 flex flex-col font-sans transition-colors duration-150">
         <ThemeProvider defaultTheme={themeCookie || "system"} initialResolvedTheme={initialTheme}>
+          <ScrollProgress />
+          <CursorFollower />
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-on-accent font-semibold"
