@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import { cookies } from "next/headers";
 import { Fraunces, Instrument_Sans, Noto_Serif_Tamil } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { MobileActionBar } from "@/components/layout/mobile-action-bar";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 import "@/styles/globals.css";
 
 const fraunces = Fraunces({
@@ -61,35 +63,46 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0F3D2E",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F7F3EC" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B0F14" },
+  ],
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const themeCookie = cookieStore.get("theme")?.value as "system" | "light" | "dark" | undefined;
+  const initialTheme = themeCookie === "dark" || themeCookie === "light" ? themeCookie : undefined;
+
   return (
     <html
       lang="en"
+      data-theme={initialTheme}
       className={`${fraunces.variable} ${instrumentSans.variable} ${notoTamil.variable}`}
+      suppressHydrationWarning
     >
-      <body className="min-h-screen bg-night-1 text-night-text antialiased selection:bg-saffron/20 flex flex-col font-sans">
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-saffron focus:px-4 focus:py-2 focus:text-ink font-semibold"
-        >
-          Skip to main content
-        </a>
-        <Header />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <Footer />
-        <MobileActionBar />
+      <body className="min-h-screen bg-base text-primary antialiased selection:bg-accent/20 flex flex-col font-sans transition-colors duration-150">
+        <ThemeProvider defaultTheme={themeCookie || "system"} initialResolvedTheme={initialTheme}>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-on-accent font-semibold"
+          >
+            Skip to main content
+          </a>
+          <Header />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <MobileActionBar />
+        </ThemeProvider>
       </body>
     </html>
   );

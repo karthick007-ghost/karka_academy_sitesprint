@@ -1,5 +1,6 @@
 // Scripts / Check-Contrast
-// Asserts that every color pair in docs/02 meets WCAG 2.2 AA standards
+// Asserts that every color pair in docs/02 and docs/11 meets WCAG 2.2 AA standards
+// Audits BOTH Light and Dark theme token pairs (12 pairs each = 24 checks)
 
 interface ColorPair {
   name: string;
@@ -8,22 +9,36 @@ interface ColorPair {
   minRatio: number;
 }
 
-const HEX_COLORS: Record<string, string> = {
-  paper: "#F7F3EC",
-  "paper-2": "#EFE8DB",
-  ink: "#14171F",
-  "ink-2": "#4A4F5C",
-  "ink-3": "#6B6F7B",
-  saffron: "#FF6A2B",
-  "saffron-ink": "#A63A0B",
-  forest: "#0F3D2E",
-  gold: "#B8964E",
-  "gold-ink": "#7A5F24",
-  night: "#0B0F14",
-  "night-2": "#121821",
-  "night-text": "#F3EEE4",
-  "night-muted": "#A9B0BD",
-  mint: "#7BE0AD",
+const LIGHT_THEME: Record<string, string> = {
+  bg: "#F7F3EC",
+  "bg-elev": "#FFFFFF",
+  "bg-sunken": "#EFE8DB",
+  text: "#14171F",
+  "text-muted": "#4A4F5C",
+  accent: "#FF6A2B",
+  "on-accent": "#14171F",
+  "accent-text": "#A63A0B",
+  "brand-violet": "#6C2BD9",
+  "brand-cyan": "#0284C7",
+  "positive-text": "#0B6B45",
+  "border-ui": "#7C7768",
+  focus: "#0F3D2E",
+};
+
+const DARK_THEME: Record<string, string> = {
+  bg: "#0B0F14",
+  "bg-elev": "#121821",
+  "bg-sunken": "#0B0F14",
+  text: "#F3EEE4",
+  "text-muted": "#A9B0BD",
+  accent: "#FF6A2B",
+  "on-accent": "#14171F",
+  "accent-text": "#FF6A2B",
+  "brand-violet": "#8B5CF6",
+  "brand-cyan": "#38BDF8",
+  "positive-text": "#7BE0AD",
+  "border-ui": "#6B7587",
+  focus: "#7BE0AD",
 };
 
 function hexToRgb(hex: string): [number, number, number] {
@@ -48,27 +63,48 @@ function getContrastRatio(hex1: string, hex2: string): number {
   return (brightest + 0.05) / (darkest + 0.05);
 }
 
-const REQUIRED_PAIRS: ColorPair[] = [
-  { name: "ink on paper (body text)", fg: "ink", bg: "paper", minRatio: 7.0 },
-  { name: "ink-2 on paper (secondary text)", fg: "ink-2", bg: "paper", minRatio: 4.5 },
-  { name: "ink-3 on paper (captions >= 14px)", fg: "ink-3", bg: "paper", minRatio: 4.5 },
-  { name: "ink-2 on paper-2", fg: "ink-2", bg: "paper-2", minRatio: 4.5 },
-  { name: "saffron-ink on paper (accent text)", fg: "saffron-ink", bg: "paper", minRatio: 4.5 },
-  { name: "ink on saffron (primary button text)", fg: "ink", bg: "saffron", minRatio: 4.5 },
-  { name: "forest on paper", fg: "forest", bg: "paper", minRatio: 7.0 },
-  { name: "gold-ink on paper", fg: "gold-ink", bg: "paper", minRatio: 4.5 },
-  { name: "night-text on night", fg: "night-text", bg: "night", minRatio: 7.0 },
-  { name: "night-muted on night", fg: "night-muted", bg: "night", minRatio: 4.5 },
-  { name: "saffron on night (accent text on dark)", fg: "saffron", bg: "night", minRatio: 4.5 },
-  { name: "mint on night", fg: "mint", bg: "night", minRatio: 4.5 },
+// 12 checks for Light Theme
+const LIGHT_PAIRS: ColorPair[] = [
+  { name: "text on bg (body text on paper)", fg: "text", bg: "bg", minRatio: 7.0 },
+  { name: "text on bg-elev (card body text)", fg: "text", bg: "bg-elev", minRatio: 7.0 },
+  { name: "text-muted on bg (secondary text)", fg: "text-muted", bg: "bg", minRatio: 4.5 },
+  { name: "text-muted on bg-elev (card secondary text)", fg: "text-muted", bg: "bg-elev", minRatio: 4.5 },
+  { name: "text-muted on bg-sunken (sunken secondary text)", fg: "text-muted", bg: "bg-sunken", minRatio: 4.5 },
+  { name: "accent-text on bg (accent text on paper)", fg: "accent-text", bg: "bg", minRatio: 4.5 },
+  { name: "accent-text on bg-elev (accent text on card)", fg: "accent-text", bg: "bg-elev", minRatio: 4.5 },
+  { name: "on-accent on accent (button text on accent fill)", fg: "on-accent", bg: "accent", minRatio: 4.5 },
+  { name: "positive-text on bg (success text on paper)", fg: "positive-text", bg: "bg", minRatio: 4.5 },
+  { name: "border-ui on bg (UI inputs/controls)", fg: "border-ui", bg: "bg", minRatio: 3.0 },
+  { name: "border-ui on bg-sunken (controls on sunken)", fg: "border-ui", bg: "bg-sunken", minRatio: 3.0 },
+  { name: "focus on bg (focus indicator ring)", fg: "focus", bg: "bg", minRatio: 3.0 },
+];
+
+// 12 checks for Dark Theme
+const DARK_PAIRS: ColorPair[] = [
+  { name: "text on bg (body text on dark)", fg: "text", bg: "bg", minRatio: 7.0 },
+  { name: "text on bg-elev (card body text)", fg: "text", bg: "bg-elev", minRatio: 7.0 },
+  { name: "text-muted on bg (secondary text)", fg: "text-muted", bg: "bg", minRatio: 4.5 },
+  { name: "text-muted on bg-elev (card secondary text)", fg: "text-muted", bg: "bg-elev", minRatio: 4.5 },
+  { name: "accent-text on bg (accent text on dark)", fg: "accent-text", bg: "bg", minRatio: 4.5 },
+  { name: "accent-text on bg-elev (accent text on card)", fg: "accent-text", bg: "bg-elev", minRatio: 4.5 },
+  { name: "on-accent on accent (button text on accent fill)", fg: "on-accent", bg: "accent", minRatio: 4.5 },
+  { name: "positive-text on bg (success text on dark)", fg: "positive-text", bg: "bg", minRatio: 4.5 },
+  { name: "positive-text on bg-elev (success text on card)", fg: "positive-text", bg: "bg-elev", minRatio: 4.5 },
+  { name: "border-ui on bg (UI inputs/controls)", fg: "border-ui", bg: "bg", minRatio: 3.0 },
+  { name: "border-ui on bg-elev (controls on card)", fg: "border-ui", bg: "bg-elev", minRatio: 3.0 },
+  { name: "focus on bg (focus indicator ring)", fg: "focus", bg: "bg", minRatio: 3.0 },
 ];
 
 console.log("=== Checking Design System Token Contrast (WCAG 2.2 AA) ===");
 let hasFailure = false;
+let totalChecks = 0;
+let passedChecks = 0;
 
-for (const pair of REQUIRED_PAIRS) {
-  const fgHex = HEX_COLORS[pair.fg];
-  const bgHex = HEX_COLORS[pair.bg];
+console.log("\n--- [Light Theme: 12 Token Pairs] ---");
+for (const pair of LIGHT_PAIRS) {
+  totalChecks++;
+  const fgHex = LIGHT_THEME[pair.fg];
+  const bgHex = LIGHT_THEME[pair.bg];
   if (!fgHex || !bgHex) {
     console.error(`Unknown token in pair: ${pair.name}`);
     hasFailure = true;
@@ -76,14 +112,35 @@ for (const pair of REQUIRED_PAIRS) {
   }
   const ratio = getContrastRatio(fgHex, bgHex);
   const passed = ratio >= pair.minRatio;
+  if (passed) passedChecks++;
+  else hasFailure = true;
   const status = passed ? "✓ PASS" : "✗ FAIL";
   console.log(`${status} [${ratio.toFixed(2)}:1, min: ${pair.minRatio}:1] - ${pair.name} (${fgHex} on ${bgHex})`);
-  if (!passed) hasFailure = true;
 }
+
+console.log("\n--- [Dark Theme: 12 Token Pairs] ---");
+for (const pair of DARK_PAIRS) {
+  totalChecks++;
+  const fgHex = DARK_THEME[pair.fg];
+  const bgHex = DARK_THEME[pair.bg];
+  if (!fgHex || !bgHex) {
+    console.error(`Unknown token in pair: ${pair.name}`);
+    hasFailure = true;
+    continue;
+  }
+  const ratio = getContrastRatio(fgHex, bgHex);
+  const passed = ratio >= pair.minRatio;
+  if (passed) passedChecks++;
+  else hasFailure = true;
+  const status = passed ? "✓ PASS" : "✗ FAIL";
+  console.log(`${status} [${ratio.toFixed(2)}:1, min: ${pair.minRatio}:1] - ${pair.name} (${fgHex} on ${bgHex})`);
+}
+
+console.log(`\nContrast Check Summary: ${passedChecks}/${totalChecks} checks passed.`);
 
 if (hasFailure) {
   console.error("\nContrast check FAILED. One or more color token pairs violate WCAG 2.2 AA requirements.");
   process.exit(1);
 } else {
-  console.log("\nAll color token pairs satisfy WCAG 2.2 AA contrast rules.");
+  console.log("\n✓ All 24 color token pairs across Light and Dark themes satisfy WCAG 2.2 AA contrast rules.");
 }

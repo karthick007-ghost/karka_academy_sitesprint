@@ -15,6 +15,7 @@ import {
 import { LeadForm } from "@/components/forms/lead-form";
 import { siteConfig } from "@/content/site";
 import { Menu, X, ChevronDown, PhoneCall, Sparkles } from "lucide-react";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 
 export function Header() {
   const pathname = usePathname();
@@ -131,6 +132,7 @@ export function Header() {
 
           {/* CTA & Actions */}
           <div className="hidden sm:flex items-center gap-3">
+            <ThemeToggle />
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger asChild>
                 <Button variant="primary" size="md" className="shadow-glow">
@@ -158,6 +160,7 @@ export function Header() {
 
           {/* Mobile Menu Trigger */}
           <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -190,14 +193,17 @@ export function Header() {
               </div>
               <span className="font-bold text-night-text">KARKA AI ACADEMY</span>
             </Link>
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-night-text"
-              aria-label="Close menu"
-            >
-              <X className="h-5 w-5" />
-            </button>
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-night-text"
+                aria-label="Close menu"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
           </div>
 
           {/* Navigation Links */}

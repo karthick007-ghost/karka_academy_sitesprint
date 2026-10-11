@@ -25,8 +25,8 @@
   }
 
   body {
-    background-color: var(--paper);
-    color: var(--ink);
+    background-color: var(--bg);
+    color: var(--text);
     font-family: var(--font-instrument), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
@@ -34,12 +34,12 @@
 
   /* Focus visible accessibility rings */
   :focus-visible {
-    outline: 2px solid var(--forest);
+    outline: 2px solid var(--focus);
     outline-offset: 2px;
   }
 
   .night-section :focus-visible {
-    outline: 2px solid var(--mint);
+    outline: 2px solid var(--focus);
     outline-offset: 2px;
   }
 
@@ -49,3 +49,198 @@
     min-width: 44px;
   }
 }
+
+@layer utilities {
+  .focus-ring {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .bg-base {
+    background-color: var(--bg);
+  }
+  .bg-elev {
+    background-color: var(--bg-elev);
+  }
+  .bg-sunken {
+    background-color: var(--bg-sunken);
+  }
+  .text-primary {
+    color: var(--text);
+  }
+  .text-muted {
+    color: var(--text-muted);
+  }
+  .border-ui {
+    border-color: var(--border-ui);
+  }
+  .border-soft {
+    border-color: var(--border-soft);
+  }
+  .accent-text {
+    color: var(--accent-text);
+  }
+  .positive-text {
+    color: var(--positive-text);
+  }
+  .brand-violet {
+    color: var(--brand-violet);
+  }
+  .brand-cyan {
+    color: var(--brand-cyan);
+  }
+}
+
+/* ==========================================================================
+   View Transitions API (Next.js 16.4 & Theme Switching)
+   ========================================================================== */
+
+/* Interactivity during transition: allow clicks to pass through to live page */
+::view-transition {
+  pointer-events: none;
+}
+
+/* Anchored Header: fixed reference point during page transitions */
+header,
+.site-header {
+  view-transition-name: site-header;
+}
+
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+
+::view-transition-old(site-header) {
+  display: none;
+}
+
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+/* Circular Clip-Path Reveal for Theme Switching */
+html[data-theme-transition="circle"]::view-transition-old(root) {
+  animation: none;
+  z-index: 1;
+}
+
+html[data-theme-transition="circle"]::view-transition-new(root) {
+  animation: theme-circle-reveal 450ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  z-index: 9999;
+}
+
+@keyframes theme-circle-reveal {
+  from {
+    clip-path: circle(0% at var(--theme-toggle-x, 50%) var(--theme-toggle-y, 50%));
+  }
+  to {
+    clip-path: circle(150% at var(--theme-toggle-x, 50%) var(--theme-toggle-y, 50%));
+  }
+}
+
+/* Page Navigation Directional Slides & Suspense Reveals (per Next.js 16.4 guide) */
+:root {
+  --vt-duration-exit: 150ms;
+  --vt-duration-enter: 210ms;
+  --vt-duration-move: 400ms;
+}
+
+/* Directional Slide: nav-forward (content slides left) */
+::view-transition-old(.nav-forward) {
+  --slide-offset: -60px;
+  animation:
+    var(--vt-duration-exit) ease-in both vt-fade reverse,
+    var(--vt-duration-move) cubic-bezier(0.2, 0.7, 0.2, 1) both vt-slide reverse;
+}
+
+::view-transition-new(.nav-forward) {
+  --slide-offset: 60px;
+  animation:
+    var(--vt-duration-enter) ease-out var(--vt-duration-exit) both vt-fade,
+    var(--vt-duration-move) cubic-bezier(0.2, 0.7, 0.2, 1) both vt-slide;
+}
+
+/* Directional Slide: nav-back (content slides right) */
+::view-transition-old(.nav-back) {
+  --slide-offset: 60px;
+  animation:
+    var(--vt-duration-exit) ease-in both vt-fade reverse,
+    var(--vt-duration-move) cubic-bezier(0.2, 0.7, 0.2, 1) both vt-slide reverse;
+}
+
+::view-transition-new(.nav-back) {
+  --slide-offset: -60px;
+  animation:
+    var(--vt-duration-enter) ease-out var(--vt-duration-exit) both vt-fade,
+    var(--vt-duration-move) cubic-bezier(0.2, 0.7, 0.2, 1) both vt-slide;
+}
+
+/* Suspense Reveals (Skeleton slide-down / Content slide-up) */
+::view-transition-old(.slide-down) {
+  animation:
+    var(--vt-duration-exit) ease-out both vt-fade reverse,
+    var(--vt-duration-exit) ease-out both vt-slide-y reverse;
+}
+
+::view-transition-new(.slide-up) {
+  animation:
+    var(--vt-duration-enter) ease-in var(--vt-duration-exit) both vt-fade,
+    var(--vt-duration-move) ease-in both vt-slide-y;
+}
+
+/* Shared-element morph with subtle blur keyframe */
+::view-transition-group(.morph) {
+  animation-duration: 400ms;
+}
+
+::view-transition-image-pair(.morph) {
+  animation-name: vt-via-blur;
+}
+
+@keyframes vt-via-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+
+@keyframes vt-slide {
+  from {
+    translate: var(--slide-offset);
+  }
+  to {
+    translate: 0;
+  }
+}
+
+@keyframes vt-slide-y {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes vt-fade {
+  from {
+    filter: blur(3px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* Reduced Motion: Disable all View Transition animations */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*),
+  ::view-transition-image-pair(*) {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+

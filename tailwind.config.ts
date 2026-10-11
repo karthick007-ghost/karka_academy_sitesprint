@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: ["class", '[data-theme="dark"]'],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,6 +10,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Semantic Tokens (Direct CSS variable bindings)
+        "bg-base": "var(--bg)",
+        "bg-elev": "var(--bg-elev)",
+        "bg-sunken": "var(--bg-sunken)",
+        "text-primary": "var(--text)",
+        "text-muted": "var(--text-muted)",
+        accent: "var(--accent)",
+        "on-accent": "var(--on-accent)",
+        "accent-text": "var(--accent-text)",
+        "positive-text": "var(--positive-text)",
+        "brand-violet": "var(--brand-violet)",
+        "brand-cyan": "var(--brand-cyan)",
+        "border-ui": "var(--border-ui)",
+        "border-soft": "var(--border-soft)",
+        "focus-ring": "var(--focus)",
+
+        // Ergonomic short aliases
+        base: "var(--bg)",
+        elev: "var(--bg-elev)",
+        sunken: "var(--bg-sunken)",
+        primary: "var(--text)",
+        muted: "var(--text-muted)",
+        ui: "var(--border-ui)",
+        soft: "var(--border-soft)",
+
+        // Legacy tokens (backward compatibility)
         paper: "var(--paper)",
         "paper-2": "var(--paper-2)",
         ink: "var(--ink)",
