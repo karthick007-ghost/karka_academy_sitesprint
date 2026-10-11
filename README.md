@@ -55,7 +55,7 @@ npm run verify:all
 | **Originality & Provenance** | `npm run verify:originality` | **PASS (Zero runs of 8+ words copied, no scraped assets)** |
 | **Unit & Algorithmic Tests** | `npm run test` | **PASS (23/23 tests pass)** |
 | **Security & Lead Abuse** | `npm run test:sec` | **PASS (Rate limit & honeypot tests pass)** |
-| **Static Next.js Build** | `npm run build` | **PASS (60 static pages generated)** |
+| **Static Next.js Build** | `npm run build` | **PASS (61 static pages generated)** |
 
 ---
 

@@ -46,7 +46,7 @@ In strict compliance with our Non-Negotiable Truthfulness Policy (`AGENTS.md`):
 ---
 
 ## 4. Key Architectural Deliverables
-- **Next.js 16 App Router + React 19:** 60 statically pre-rendered pages (`SSG`).
+- **Next.js 16 App Router + React 19:** 61 statically pre-rendered pages (`SSG`).
 - **3D Orbit Canvas + Capability-Aware Fallback:** Three.js orbit scene lazy-loaded, automatically degrades to static CSS `HeroPoster` on low-end hardware, reduced motion, or data-saver mode.
 - **Career Track Finder Quiz:** 4-step recommendation algorithm with instant pre-filling into lead capture.
 - **Enterprise Security:** Strict CSP in `src/proxy.ts`, sliding window rate limiting, and honeypot bot trap on `/api/lead`.
