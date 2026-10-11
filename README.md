@@ -1,12 +1,26 @@
 # Karka AI & Tech Academy — Modern Web Platform
 
 > **Redesigned & Engineered for Karka AI & Tech Academy (Nagercoil, Tamil Nadu)**  
-> **Competition Entry — 2-Member Engineering Team**  
+> **Competition Entry — 2-Member Team: Thirukarthick T & Mohamed Faris khan M**  
+> **University College of Engineering, Nagercoil • Electrical & Electronics Engineering • 4th Year**  
 > **Original Creative Work • Zero Plagiarism • WCAG 2.2 AA Compliant • Production Ready**
 
 ---
 
-## 1. Project Vision & Mission
+## 1. Team Information
+
+| Details | Team Member 1 | Team Member 2 |
+| :--- | :--- | :--- |
+| **Full Name** | **Thirukarthick T** | **Mohamed Faris khan M** |
+| **College / Institution** | University College of Engineering, Nagercoil | University College of Engineering, Nagercoil |
+| **Department** | Department of Electrical and Electronics Engineering (EEE) | Department of Electrical and Electronics Engineering (EEE) |
+| **Year of Study** | 4th Year (Final Year, 2026 Batch) | 4th Year (Final Year, 2026 Batch) |
+| **Location** | Nagercoil, Kanyakumari District, Tamil Nadu | Nagercoil, Kanyakumari District, Tamil Nadu |
+| **Project Role** | Full-Stack Architecture, 3D Engine & Security | UX Systems, Motion & Accessibility Guard |
+
+---
+
+## 2. Project Vision & Mission
 
 **Karka AI & Tech Academy** (`karka.academy`) is an AI-first software mentorship academy headquartered in Nagercoil, Kanyakumari District, Tamil Nadu. Designed for ambitious learners, college students, and career switchers across Tier-2/Tier-3 regions, Karka offers transparent **Pay After Placement (PAP)** training and real commercial client internships through its product studio, **Agile Tribers**.
 
@@ -14,7 +28,7 @@ This ground-up redesign transforms Karka's online presence into a standout, huma
 
 ---
 
-## 2. Standout Design Innovations & Highlights
+## 3. Standout Design Innovations & Highlights
 
 ### A. Neo-Classical Tamil Editorial × Glass Depth Aesthetics
 * **Theme Parity (Light & Dark):**
@@ -59,7 +73,7 @@ This ground-up redesign transforms Karka's online presence into a standout, huma
 
 ---
 
-## 3. Tech Stack & Architecture
+## 4. Tech Stack & Architecture
 
 | Layer | Technologies |
 | :--- | :--- |
@@ -73,7 +87,7 @@ This ground-up redesign transforms Karka's online presence into a standout, huma
 
 ---
 
-## 4. Automated Quality Gates & Verification
+## 5. Automated Quality Gates & Verification
 
 Every pull request and build passes the complete automated verification pipeline:
 
@@ -94,7 +108,7 @@ npm run verify:all
 
 ---
 
-## 5. Getting Started & Local Development
+## 6. Getting Started & Local Development
 
 ### Prerequisites
 * **Node.js:** `v20.x` or later (LTS recommended)
@@ -131,7 +145,7 @@ npm run verify:all      # Execute full verification pipeline in order
 
 ---
 
-## 6. Project Structure
+## 7. Project Structure
 
 ```
 karka_academy/
@@ -171,7 +185,7 @@ karka_academy/
 
 ---
 
-## 7. AI-Use Disclosure & Originality Guarantee
+## 8. AI-Use Disclosure & Originality Guarantee
 
 This project was engineered by our **2-member independent team** pairing with **Google Antigravity**:
 * **Human Team Role:** Strategic UX vision, brand translation from Instagram `@karka.ai`, factual verification of academy mentorship data, ethical policy design, and rigorous visual QA across mobile and desktop.
@@ -180,6 +194,6 @@ This project was engineered by our **2-member independent team** pairing with **
 
 ---
 
-## 8. License
+## 9. License
 
 Created for the Karka Academy Website Redesign Competition. Released under the [MIT License](LICENSE).
