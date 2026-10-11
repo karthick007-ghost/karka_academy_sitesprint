@@ -10,7 +10,7 @@ test.describe("Home Page User Journeys", () => {
     // Header & Brand
     const brand = page.locator("header");
     await expect(brand).toBeVisible();
-    await expect(page.getByText("KARKA AI")).toBeVisible();
+    await expect(page.getByText("KARKA AI").first()).toBeVisible();
     await expect(page.getByText("கற்க").first()).toBeVisible();
 
     // Proof bar metrics

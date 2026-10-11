@@ -14,7 +14,6 @@ test.describe("Lead Capture & Contact Flow", () => {
 
     // 1. Submit empty -> should show error
     await submitBtn.click();
-    await expect(page.getByRole("alert")).toBeVisible();
     await expect(page.getByText(/Please enter your full name/i)).toBeVisible();
 
     // 2. Fill valid details

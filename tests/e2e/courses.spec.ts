@@ -12,10 +12,10 @@ test.describe("Courses Directory & Detail Journey", () => {
 
     // Search filter
     const searchInput = page.getByPlaceholder(/Search by skill, topic, or technology/i);
-    await searchInput.fill("React");
+    await searchInput.fill("MERN");
 
     // Results should narrow down
-    await expect(page.getByText("MERN Full Stack")).toBeVisible();
+    await expect(page.getByRole("heading", { name: "MERN Full Stack" })).toBeVisible();
 
     // Click on MERN Full Stack
     await page.getByRole("link", { name: /View Curriculum & Projects/i }).first().click();

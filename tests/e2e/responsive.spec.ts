@@ -20,12 +20,13 @@ test.describe("Responsive Layout & Mobile Action Bar", () => {
     await menuBtn.click();
 
     // Drawer should open
-    await expect(page.getByRole("dialog", { name: /Mobile Navigation/i })).toBeVisible();
-    await expect(page.getByRole("link", { name: /Pay After Placement/i })).toBeVisible();
+    const drawer = page.getByRole("dialog", { name: /Mobile Navigation/i });
+    await expect(drawer).toBeVisible();
+    await expect(drawer.getByRole("link", { name: /Pay After Placement/i })).toBeVisible();
 
     // Close menu
-    await page.getByRole("button", { name: /Close menu/i }).click();
-    await expect(page.getByRole("dialog", { name: /Mobile Navigation/i })).not.toBeVisible();
+    await drawer.getByRole("button", { name: /Close menu/i }).click();
+    await expect(drawer).not.toBeVisible();
   });
 
   test("displays desktop navigation bar on wide viewports without mobile action bar", async ({ page }) => {

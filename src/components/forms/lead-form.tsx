@@ -57,14 +57,18 @@ export function LeadForm({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...formData,
-          source,
+          name: formData.name.trim(),
+          phone: formData.phone.trim(),
+          program: formData.trackInterest || "general-inquiry",
+          consent: true,
+          hp: formData.website || "",
+          trackSource: source,
         }),
       });
 
       const data = await res.json();
 
-      if (!res.ok || !data.success) {
+      if (!res.ok || (!data.ok && !data.success)) {
         setStatus("error");
         setErrorMessage(data.error || "Submission could not be completed. Please call or WhatsApp us.");
         return;
