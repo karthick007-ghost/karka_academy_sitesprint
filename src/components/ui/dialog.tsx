@@ -34,14 +34,14 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg bg-paper p-6 sm:p-8 shadow-2xl border border-ink/10 duration-200",
+        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 rounded-2xl bg-paper dark:bg-night-2 p-6 sm:p-8 shadow-2xl border border-ink/10 dark:border-white/10 duration-200 text-ink dark:text-night-text",
         "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
         className
       )}
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm p-1.5 text-ink-3 transition-opacity hover:text-ink focus:outline-none focus:ring-2 focus:ring-forest">
+      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-lg p-1.5 text-ink-3 dark:text-night-muted transition-opacity hover:text-ink dark:hover:text-night-text focus:outline-none focus:ring-2 focus:ring-saffron">
         <X className="h-5 w-5" />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
@@ -64,7 +64,7 @@ const DialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn("font-display text-2xl font-bold tracking-tight text-ink", className)}
+    className={cn("font-display text-2xl font-bold tracking-tight text-ink dark:text-night-text", className)}
     {...props}
   />
 ));
@@ -76,7 +76,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-ink-2 leading-relaxed", className)}
+    className={cn("text-sm text-ink-2 dark:text-night-muted leading-relaxed", className)}
     {...props}
   />
 ));

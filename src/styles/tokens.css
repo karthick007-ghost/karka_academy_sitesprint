@@ -18,7 +18,9 @@
 
   /* Dark "night" surfaces (Hero, PAP, Infini) */
   --night: #0B0F14;
+  --night-1: #0B0F14;
   --night-2: #121821;
+  --night-3: #18202C;
   --night-text: #F3EEE4;
   --night-muted: #A9B0BD;
   --mint: #7BE0AD;

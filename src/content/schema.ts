@@ -62,6 +62,7 @@ export const ProjectSchema = z.object({
 export type Project = z.infer<typeof ProjectSchema>;
 
 export const FaqSchema = z.object({
+  id: z.string().optional(),
   question: z.string(),
   answer: z.string(),
   verified: VerificationStatus,

@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Instrument_Sans, Noto_Serif_Tamil } from "next/font/google";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { MobileActionBar } from "@/components/layout/mobile-action-bar";
 import "@/styles/globals.css";
 
 const fraunces = Fraunces({
@@ -74,14 +77,19 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${instrumentSans.variable} ${notoTamil.variable}`}
     >
-      <body className="min-h-screen bg-paper text-ink antialiased selection:bg-saffron/20">
+      <body className="min-h-screen bg-night-1 text-night-text antialiased selection:bg-saffron/20 flex flex-col font-sans">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-forest focus:px-4 focus:py-2 focus:text-paper"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-saffron focus:px-4 focus:py-2 focus:text-ink font-semibold"
         >
           Skip to main content
         </a>
-        <div id="main-content">{children}</div>
+        <Header />
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
+        <Footer />
+        <MobileActionBar />
       </body>
     </html>
   );

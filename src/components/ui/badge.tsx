@@ -2,7 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "saffron" | "forest" | "glass" | "night";
+  variant?: "default" | "saffron" | "forest" | "glass" | "night" | "mint";
 }
 
 function Badge({ className, variant = "default", ...props }: BadgeProps) {
@@ -12,6 +12,7 @@ function Badge({ className, variant = "default", ...props }: BadgeProps) {
     forest: "border border-forest/20 bg-forest/10 text-forest",
     glass: "glass text-night-text border-white/20",
     night: "border border-mint/30 bg-mint/10 text-mint",
+    mint: "border border-mint/30 bg-mint/10 text-mint",
   };
 
   return (
